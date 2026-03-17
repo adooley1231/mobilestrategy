@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Experience Audit — Exclusive Resorts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Brand Tokens ──────────────────────────────────────── */
+    :root {
+      --color-slate:        #4E738A;
+      --color-dark-blue:    #004750;
+      --color-text:         #2F2E31;
+      --color-bg:           #F3F3F3;
+      --color-white:        #FFFFFF;
+      --color-p0:           #C94040;
+      --color-p1:           #B07A2A;
+      --color-p2:           #3A7D54;
+      --color-border:       #D9D9D9;
+      --color-muted:        #6B7280;
+      --color-surface:      #FAFAFA;
+      --gradient-primary:   linear-gradient(134deg, #4E738A 0%, #004750 100%);
+
+      --font-display:  'Cormorant Garamond', Georgia, serif;
+      --font-body:     'DM Sans', system-ui, sans-serif;
+
+      --nav-h: 60px;
+    }
+
+    /* ── Reset ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navigation ─────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--color-dark-blue);
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      gap: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      white-space: nowrap;
+      margin-right: 40px;
+      flex-shrink: 0;
+    }
+    .nav-tabs {
+      display: flex;
+      gap: 2px;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      padding: 0 18px;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: var(--font-body);
+    }
+    .nav-tab:hover { color: rgba(255,255,255,0.85); }
+    .nav-tab.active {
+      color: #FFFFFF;
+      border-bottom-color: var(--color-slate);
+    }
+
+    /* ── Main Layout ─────────────────────────────────────────── */
+    .main { margin-top: var(--nav-h); }
+    .section { display: none; }
+    .section.visible { display: block; }
+
+    /* ── Hero ────────────────────────────────────────────────── */
+    .hero {
+      background: var(--gradient-primary);
+      padding: 80px 64px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -80px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: 30%;
+      width: 700px; height: 350px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.08);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 64px;
+      font-weight: 300;
+      line-height: 1.08;
+      color: #FFFFFF;
+      margin-bottom: 24px;
+      max-width: 680px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+    .hero-meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 8px; }
+    .hero-meta span::before {
+      content: '';
+      display: inline-block;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+    }
+    .hero-meta span:first-child::before { display: none; }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.05);
+      padding: 24px 28px;
+    }
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 42px;
+      font-weight: 300;
+      color: #FFFFFF;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── Content Container ──────────────────────────────────── */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .page-section {
+      padding: 64px 0;
+    }
+    .page-section + .page-section {
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* ── Section Headers ─────────────────────────────────────── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-slate);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--color-text);
+    }
+    .section-title em { font-style: italic; }
+    .section-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--color-slate);
+      margin-bottom: 32px;
+    }
+
+    /* ── Priority Badges ─────────────────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .badge-p0 { background: rgba(201,64,64,0.1); color: var(--color-p0); }
+    .badge-p1 { background: rgba(176,122,42,0.1); color: var(--color-p1); }
+    .badge-p2 { background: rgba(58,125,84,0.1); color: var(--color-p2); }
+    .badge-native { background: rgba(78,115,138,0.12); color: var(--color-slate); }
+    .badge-web { background: rgba(0,71,80,0.1); color: var(--color-dark-blue); }
+    .badge-both { background: rgba(47,46,49,0.08); color: var(--color-text); }
+
+    /* ── Issue Category Cards ───────────────────────────────── */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .category-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      padding: 28px 28px 24px;
+    }
+    .category-card-num {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--color-slate);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .category-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      margin-bottom: 12px;
+    }
+    .category-card-desc {
+      font-size: 13px;
+      color: var(--color-muted);
+      line-height: 1.55;
+    }
+    .category-card-footer {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Issue Table ─────────────────────────────────────────── */
+    .issue-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+    .issue-table thead th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      padding: 10px 16px;
+      border-bottom: 2px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .issue-table tbody tr {
+      border-bottom: 1px solid var(--color-border);
+      transition: background 0.15s;
+    }
+    .issue-table tbody tr:hover { background: var(--color-surface); }
+    .issue-table td {
+      padding: 14px 16px;
+      font-size: 13.5px;
+      vertical-align: top;
+    }
+    .issue-table td:first-child { width: 52px; }
+    .issue-num {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--color-slate);
+    }
+    .issue-title { font-weight: 500; color: var(--color-text); line-height: 1.45; }
+    .issue-location {
+      font-size: 12px;
+      color: var(--color-muted);
+      font-family: 'Courier New', monospace;
+      margin-top: 3px;
+    }
+    .issue-fix {
+      font-size: 13px;
+      color: var(--color-dark-blue);
+    }
+
+    /* ── Platform Map Table ──────────────────────────────────── */
+    .platform-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+    .platform-table thead th {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 2px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .platform-table tbody tr { border-bottom: 1px solid var(--color-border); }
+    .platform-table tbody tr:hover { background: var(--color-surface); }
+    .platform-table td {
+      padding: 12px 16px;
+      font-size: 13.5px;
+      vertical-align: middle;
+    }
+    .platform-table td:first-child { font-weight: 500; }
+    .platform-chip {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 500;
+      background: var(--color-bg);
+      color: var(--color-muted);
+      border: 1px solid var(--color-border);
+    }
+    .platform-chip.native { background: rgba(78,115,138,0.1); color: var(--color-slate); border-color: rgba(78,115,138,0.25); }
+    .platform-chip.web { background: rgba(0,71,80,0.08); color: var(--color-dark-blue); border-color: rgba(0,71,80,0.2); }
+    .platform-chip.both { background: rgba(201,64,64,0.08); color: var(--color-p0); border-color: rgba(201,64,64,0.2); }
+    .arrow { color: var(--color-muted); margin: 0 4px; }
+
+    /* ── Roadmap ─────────────────────────────────────────────── */
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--color-border);
+      background: var(--color-border);
+      margin-bottom: 40px;
+    }
+    .roadmap-phase {
+      background: var(--color-white);
+      padding: 28px 24px;
+    }
+    .roadmap-phase-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-slate);
+      margin-bottom: 6px;
+    }
+    .roadmap-phase-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--color-text);
+      margin-bottom: 8px;
+    }
+    .roadmap-phase-time {
+      font-size: 12px;
+      color: var(--color-muted);
+      margin-bottom: 16px;
+    }
+    .roadmap-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .roadmap-items li {
+      font-size: 12.5px;
+      color: var(--color-text);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.45;
+    }
+    .roadmap-items li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 7px;
+      width: 5px; height: 5px;
+      border: 1px solid var(--color-slate);
+    }
+    .roadmap-output {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--color-muted);
+    }
+
+    /* ── Priority Matrix ─────────────────────────────────────── */
+    .priority-section {
+      margin-bottom: 40px;
+    }
+    .priority-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .priority-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+    }
+    .priority-label.p0 { background: var(--color-p0); color: white; }
+    .priority-label.p1 { background: var(--color-p1); color: white; }
+    .priority-label.p2 { background: var(--color-p2); color: white; }
+    .priority-desc { font-size: 13px; color: var(--color-muted); }
+
+    .priority-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--color-border);
+      border: 1px solid var(--color-border);
+    }
+    .priority-card {
+      background: var(--color-white);
+      display: grid;
+      grid-template-columns: 40px 1fr 120px 80px;
+      gap: 0;
+      align-items: center;
+    }
+    .priority-card-num {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--color-muted);
+      padding: 16px;
+      text-align: center;
+      border-right: 1px solid var(--color-border);
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .priority-card-content {
+      padding: 14px 20px;
+    }
+    .priority-card-title { font-weight: 500; font-size: 13.5px; }
+    .priority-card-platform {
+      padding: 14px 12px;
+      border-left: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .priority-card-effort {
+      padding: 14px 12px;
+      border-left: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .effort-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      border: 1px solid var(--color-border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-muted);
+    }
+    .effort-badge.s { border-color: var(--color-p2); color: var(--color-p2); }
+    .effort-badge.m { border-color: var(--color-p1); color: var(--color-p1); }
+    .effort-badge.l { border-color: var(--color-p0); color: var(--color-p0); }
+
+    /* ── Design System Comparison ───────────────────────────── */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .comparison-card {
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+    }
+    .comparison-card-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .comparison-card-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text);
+    }
+    .comparison-card-body {
+      background: var(--color-white);
+    }
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .comparison-row:last-child { border-bottom: none; }
+    .comparison-label {
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-muted);
+      background: var(--color-bg);
+      border-right: 1px solid var(--color-border);
+    }
+    .comparison-value {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--color-text);
+    }
+    .comparison-value.bad { color: var(--color-p0); }
+    .comparison-value.warn { color: var(--color-p1); }
+
+    /* ── Quick Wins ──────────────────────────────────────────── */
+    .quick-wins {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--color-border);
+      border: 1px solid var(--color-border);
+      margin-bottom: 40px;
+    }
+    .quick-win {
+      background: var(--color-white);
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .quick-win-time {
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-p2);
+      background: rgba(58,125,84,0.08);
+      padding: 3px 8px;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    .quick-win-text { font-size: 13.5px; color: var(--color-text); line-height: 1.45; }
+
+    /* ── Callout Box ─────────────────────────────────────────── */
+    .callout {
+      border-left: 3px solid var(--color-slate);
+      padding: 20px 24px;
+      background: var(--color-white);
+      margin-bottom: 32px;
+    }
+    .callout.critical { border-left-color: var(--color-p0); }
+    .callout-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-slate);
+      margin-bottom: 8px;
+    }
+    .callout.critical .callout-title { color: var(--color-p0); }
+    .callout-body { font-size: 13.5px; line-height: 1.6; color: var(--color-text); }
+
+    /* ── Detail Accordion ───────────────────────────────────── */
+    .accordion {
+      border: 1px solid var(--color-border);
+      margin-bottom: 16px;
+    }
+    .accordion-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: var(--color-white);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+      font-family: var(--font-body);
+    }
+    .accordion-header:hover { background: var(--color-surface); }
+    .accordion-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text);
+      flex: 1;
+    }
+    .accordion-count {
+      font-size: 12px;
+      color: var(--color-muted);
+      white-space: nowrap;
+    }
+    .accordion-icon {
+      font-size: 18px;
+      color: var(--color-slate);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .accordion.open .accordion-icon { transform: rotate(45deg); }
+    .accordion-body {
+      display: none;
+      border-top: 1px solid var(--color-border);
+      padding: 0;
+      background: var(--color-white);
+    }
+    .accordion.open .accordion-body { display: block; }
+
+    /* ── Two-Col Layout ─────────────────────────────────────── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    /* ── Strength / Issue Lists ─────────────────────────────── */
+    .finding-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .finding-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+    .finding-list li::before {
+      flex-shrink: 0;
+      margin-top: 4px;
+      font-size: 11px;
+    }
+    .finding-list.strengths li::before { content: '✓'; color: var(--color-p2); font-weight: 700; }
+    .finding-list.issues li::before { content: '✕'; color: var(--color-p0); font-weight: 700; }
+
+    /* ── Divider ─────────────────────────────────────────────── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: 40px 0;
+    }
+
+    /* ── Color Swatch ────────────────────────────────────────── */
+    .color-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .color-swatch {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    /* ── Highlight Stat ─────────────────────────────────────── */
+    .highlight-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .highlight-stat-num {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--color-p0);
+      line-height: 1;
+    }
+    .highlight-stat-label { font-size: 14px; color: var(--color-muted); }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--color-dark-blue);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 28px 40px;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Animations ──────────────────────────────────────────── */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .section.visible > * {
+      animation: fadeIn 0.35s ease both;
+    }
+    .section.visible > *:nth-child(2) { animation-delay: 0.05s; }
+    .section.visible > *:nth-child(3) { animation-delay: 0.10s; }
+    .section.visible > *:nth-child(4) { animation-delay: 0.15s; }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ──────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-brand">Exclusive Resorts</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" data-tab="overview">Overview</button>
+    <button class="nav-tab" data-tab="strategy">Mobile Strategy</button>
+    <button class="nav-tab" data-tab="native">The Club — Native App</button>
+    <button class="nav-tab" data-tab="web">The Source v2 — Mobile Web</button>
+    <button class="nav-tab" data-tab="issues">All Issues</button>
+  </div>
+</nav>
+
+<div class="main">
+
+  <!-- ══════════════════════════════════════════════════════════
+       OVERVIEW
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="tab-overview" class="section visible">
+
+    <div class="hero">
+      <div class="hero-eyebrow">Mobile Experience Audit · March 2026</div>
+      <h1 class="hero-title">The Club &amp; <em>The Source</em><br>Mobile Audit</h1>
+      <div class="hero-meta">
+        <span>React Native (iOS + Android)</span>
+        <span>Next.js Mobile Web + Webview</span>
+        <span>Scope: Full UX/UI Audit</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">763</div>
+          <div class="hero-stat-label">Hardcoded color values</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">20</div>
+          <div class="hero-stat-label">Priority issues logged</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5</div>
+          <div class="hero-stat-label">P0 fixes (sprint 1)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-label">Phases to completion</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--color-white); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="page-section">
+          <div class="section-rule"></div>
+          <div class="section-header">
+            <span class="section-eyebrow">The Core Problem</span>
+          </div>
+          <div class="callout critical">
+            <div class="callout-title">Fractured Mobile Product</div>
+            <div class="callout-body">Members experience a fragmented product — a native app (The Club) that embeds the web portal (The Source v2) as a webview, but neither product knows the other exists. The native app has no design system coherence. The web app doesn't know it's running on a phone. The result is redundant navigation, inconsistent visual language, no shared ownership of features, and a luxury product that doesn't feel luxurious on the platform where most members will use it.</div>
+          </div>
+
+          <div class="category-grid">
+            <div class="category-card">
+              <div class="category-card-num">2</div>
+              <div class="category-card-title">Design Systems</div>
+              <div class="category-card-desc">No shared design tokens between native and web. 70+ colors in native, 4 error reds, 23 font sizes. Raleway + Canela vs. Gotham + Canela.</div>
+              <div class="category-card-footer">
+                <span class="badge badge-native">Native</span>
+                <span class="badge badge-web">Web</span>
+              </div>
+            </div>
+            <div class="category-card">
+              <div class="category-card-num">6</div>
+              <div class="category-card-title">Webview Gap</div>
+              <div class="category-card-desc">The web app runs blind inside The Club. Redundant nav + footer shown, no auth bridge, Android back conflicts, external links unhandled.</div>
+              <div class="category-card-footer">
+                <span class="badge badge-web">Web</span>
+              </div>
+            </div>
+            <div class="category-card">
+              <div class="category-card-num">80%</div>
+              <div class="category-card-title">Accessibility Gap</div>
+              <div class="category-card-desc">80%+ of interactive elements missing accessibility labels. Touch targets below 44px. No VoiceOver/TalkBack testing documented.</div>
+              <div class="category-card-footer">
+                <span class="badge badge-native">Native</span>
+                <span class="badge badge-web">Web</span>
+              </div>
+            </div>
+            <div class="category-card">
+              <div class="category-card-num">40px</div>
+              <div class="category-card-title">Touch Targets</div>
+              <div class="category-card-desc">Standard is 44px. Both platforms fall short — medium buttons at 40px, phone inputs at 40px, icon tap areas unconfirmed.</div>
+              <div class="category-card-footer">
+                <span class="badge badge-native">Native</span>
+                <span class="badge badge-web">Web</span>
+              </div>
+            </div>
+            <div class="category-card">
+              <div class="category-card-num">6/26</div>
+              <div class="category-card-title">Deep Links Mapped</div>
+              <div class="category-card-desc">Only 6 of 26+ routes are reachable via deep link. No property, destination, FlightInfo, Connect, or Settings screens linked.</div>
+              <div class="category-card-footer">
+                <span class="badge badge-native">Native</span>
+              </div>
+            </div>
+            <div class="category-card">
+              <div class="category-card-num">0</div>
+              <div class="category-card-title">Sticky CTAs</div>
+              <div class="category-card-desc">No sticky CTA on search, booking, or trip detail flows. Keyboard covers the CTA button. Users must scroll to complete conversion actions.</div>
+              <div class="category-card-footer">
+                <span class="badge badge-web">Web</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-title">What Good Looks Like</div>
+            <div class="callout-body">A member opens the app → native dashboard (fast, offline-capable) → taps Explore → seamless web transition, no double nav, no footer → browses with sticky CTAs → books a trip with keyboard-safe forms → sees My Trips → taps Connect → native real-time messaging, never leaves native. Everything at 16px+ body text, 44px+ tap targets, Canela only at 28px+.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /overview -->
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       MOBILE STRATEGY
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="tab-strategy" class="section">
+
+    <div class="hero">
+      <div class="hero-eyebrow">Platform Architecture · Mobile Strategy</div>
+      <h1 class="hero-title"><em>Native vs. Web</em><br>Platform Decision<br>Framework</h1>
+      <div class="hero-meta">
+        <span>The Club (React Native)</span>
+        <span>The Source v2 (Next.js webview)</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">5</div>
+          <div class="hero-stat-label">Stay in native</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">7</div>
+          <div class="hero-stat-label">Move to web</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">8</div>
+          <div class="hero-stat-label">Deprecated screens</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">12wk</div>
+          <div class="hero-stat-label">Path to completion</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--color-white); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="page-section">
+          <div class="section-rule"></div>
+
+          <!-- Decision Framework -->
+          <div class="section-header">
+            <span class="section-eyebrow">Decision Framework</span>
+            <h2 class="section-title">When to use <em>native</em> vs web</h2>
+          </div>
+          <div class="two-col">
+            <div class="comparison-card">
+              <div class="comparison-card-header">
+                <div class="comparison-card-title">Use Native (React Native)</div>
+                <span class="badge badge-native">Native</span>
+              </div>
+              <div class="comparison-card-body">
+                <div class="comparison-row"><div class="comparison-label">Device</div><div class="comparison-value">Camera, GPS, push notifications, biometrics, haptics</div></div>
+                <div class="comparison-row"><div class="comparison-label">Offline</div><div class="comparison-value">Content members need without connectivity</div></div>
+                <div class="comparison-row"><div class="comparison-label">Performance</div><div class="comparison-value">Frequently-accessed screens where 60fps matters</div></div>
+                <div class="comparison-row"><div class="comparison-label">Conventions</div><div class="comparison-value">Bottom tab nav, swipe gestures, native pickers</div></div>
+              </div>
+            </div>
+            <div class="comparison-card">
+              <div class="comparison-card-header">
+                <div class="comparison-card-title">Use Mobile Web (Webview)</div>
+                <span class="badge badge-web">Web</span>
+              </div>
+              <div class="comparison-card-body">
+                <div class="comparison-row"><div class="comparison-label">Content</div><div class="comparison-value">Complex, content-heavy flows — destinations, editorial, search</div></div>
+                <div class="comparison-row"><div class="comparison-label">Velocity</div><div class="comparison-value">Changes frequently without requiring an app release</div></div>
+                <div class="comparison-row"><div class="comparison-label">Forms</div><div class="comparison-value">Profile, add traveler, account management</div></div>
+                <div class="comparison-row"><div class="comparison-label">Admin</div><div class="comparison-value">Cancellation, policy review, document uploads</div></div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <!-- Platform Map -->
+          <div class="section-header">
+            <span class="section-eyebrow">Platform Mapping</span>
+            <h2 class="section-title">Current vs. <em>Recommended</em></h2>
+          </div>
+
+          <table class="platform-table">
+            <thead>
+              <tr>
+                <th>Feature / Flow</th>
+                <th>Current</th>
+                <th>Recommended</th>
+                <th>Rationale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Login / Auth</td><td><span class="platform-chip native">Native</span></td><td><span class="platform-chip native">Native</span></td><td>Biometrics, secure token storage</td></tr>
+              <tr><td>Bottom tab navigation</td><td><span class="platform-chip native">Native</span></td><td><span class="platform-chip native">Native</span></td><td>Platform convention, instant</td></tr>
+              <tr style="background: rgba(0,71,80,0.04);"><td><strong>Home / Dashboard</strong></td><td><span class="platform-chip web">Web</span></td><td><span class="platform-chip native">Native →</span></td><td>Frequently accessed, needs speed</td></tr>
+              <tr style="background: rgba(201,64,64,0.04);"><td><strong>Explore / Search</strong></td><td><span class="platform-chip both">Both ⚠</span></td><td><span class="platform-chip web">Web only</span></td><td>Editorial content, frequently updated</td></tr>
+              <tr style="background: rgba(201,64,64,0.04);"><td><strong>Destination details</strong></td><td><span class="platform-chip both">Both ⚠</span></td><td><span class="platform-chip web">Web only</span></td><td>Rich content, media-heavy</td></tr>
+              <tr style="background: rgba(0,71,80,0.04);"><td><strong>Property + Calendar</strong></td><td><span class="platform-chip native">Native</span></td><td><span class="platform-chip web">Web →</span></td><td>High maintenance; web more flexible</td></tr>
+              <tr><td>Available Trips</td><td><span class="platform-chip web">Web</span></td><td><span class="platform-chip web">Web</span></td><td>Forms, changes frequently</td></tr>
+              <tr><td>Book / Request Trip</td><td><span class="platform-chip web">Web</span></td><td><span class="platform-chip web">Web</span></td><td>Form-heavy, needs fewer releases</td></tr>
+              <tr><td>My Trips list</td><td><span class="platform-chip web">Web</span></td><td><span class="platform-chip web">Web</span></td><td>Push notifications from native</td></tr>
+              <tr><td>Trip Details</td><td><span class="platform-chip web">Web</span></td><td><span class="platform-chip web">Web</span></td><td>Complex multi-section layout</td></tr>
+              <tr style="background: rgba(0,71,80,0.04);"><td><strong>Get Ready / Pre-trip</strong></td><td><span class="platform-chip native">Native</span></td><td><span class="platform-chip web">Web →</span></td><td>Forms, lots of edge cases</td></tr>
+              <tr style="background: rgba(0,71,80,0.04);"><td><strong>Add Traveler</strong></td><td><span class="platform-chip native">Native</span></td><td><span class="platform-chip web">Web →</span></td><td>Form-heavy, editorial</td></tr>
+              <tr style="background: rgba(0,71,80,0.04);"><td><strong>Flight Info</strong></td><td><span class="platform-chip native">Native</span></td><td><span class="platform-chip web">Web →</span></td><td>Form-heavy</td></tr>
+              <tr style="background: rgba(0,71,80,0.04);"><td><strong>Cancellation</strong></td><td><span class="platform-chip native">Native</span></td><td><span class="platform-chip web">Web →</span></td><td>Policy display + form</td></tr>
+              <tr><td>Connect / Messaging</td><td><span class="platform-chip native">Native</span></td><td><span class="platform-chip native">Native</span></td><td>Real-time, push notifications required</td></tr>
+              <tr><td>Profile / Account</td><td><span class="platform-chip web">Web</span></td><td><span class="platform-chip web">Web</span></td><td>Forms, changes frequently</td></tr>
+              <tr><td>Community</td><td><span class="platform-chip web">Web</span></td><td><span class="platform-chip web">Web</span></td><td>Content-heavy</td></tr>
+              <tr><td>Push Notifications</td><td><span class="platform-chip native">Native</span></td><td><span class="platform-chip native">Native</span></td><td>Requires device integration</td></tr>
+            </tbody>
+          </table>
+
+          <hr class="divider" />
+
+          <!-- Roadmap -->
+          <div class="section-header">
+            <span class="section-eyebrow">Recommended Approach</span>
+            <h2 class="section-title">Four-Phase <em>Roadmap</em></h2>
+          </div>
+
+          <div class="roadmap">
+            <div class="roadmap-phase">
+              <div class="roadmap-phase-num">Phase 1</div>
+              <div class="roadmap-phase-title">Establish the Contract</div>
+              <div class="roadmap-phase-time">Weeks 1–2</div>
+              <ul class="roadmap-items">
+                <li>Document platform map — ratify with product + engineering</li>
+                <li>Add webview detection (<code>isWebview</code> flag) to The Source v2</li>
+                <li>Conditionally hide web nav + footer inside The Club</li>
+                <li>Establish shared design token source of truth</li>
+                <li>Remove 8 deprecated screens from native app</li>
+              </ul>
+              <div class="roadmap-output">Output: Clear platform architecture doc + webview-aware web app</div>
+            </div>
+            <div class="roadmap-phase" style="border-left: 1px solid var(--color-border);">
+              <div class="roadmap-phase-num">Phase 2</div>
+              <div class="roadmap-phase-title">Fix the Foundation</div>
+              <div class="roadmap-phase-time">Weeks 3–6</div>
+              <ul class="roadmap-items">
+                <li>Touch targets — 44px minimum enforced on both platforms</li>
+                <li>Typography — reduce to 8 semantic sizes, enforce Canela rules</li>
+                <li>Sticky CTAs — search, booking, trip detail flows</li>
+                <li>Keyboard avoidance — forms on both platforms</li>
+                <li>Active nav states — mobile drawer shows active section</li>
+              </ul>
+              <div class="roadmap-output">Output: Both apps meet baseline mobile UX standards</div>
+            </div>
+            <div class="roadmap-phase" style="border-left: 1px solid var(--color-border);">
+              <div class="roadmap-phase-num">Phase 3</div>
+              <div class="roadmap-phase-title">Consolidate to Web</div>
+              <div class="roadmap-phase-time">Weeks 7–12</div>
+              <ul class="roadmap-items">
+                <li>Move Add Traveler → web form (retire native)</li>
+                <li>Move Flight Info → web form</li>
+                <li>Move Cancellation → web form</li>
+                <li>Unify Explore/Search → web only</li>
+                <li>Build webview bridge: auth sharing, native back</li>
+              </ul>
+              <div class="roadmap-output">Output: Native app is shell + messaging; web handles all content flows</div>
+            </div>
+            <div class="roadmap-phase" style="border-left: 1px solid var(--color-border);">
+              <div class="roadmap-phase-num">Phase 4</div>
+              <div class="roadmap-phase-title">Elevate to Luxury</div>
+              <div class="roadmap-phase-time">Ongoing</div>
+              <ul class="roadmap-items">
+                <li>Shared design token system across both platforms</li>
+                <li>Accessibility remediation — WCAG AA compliance</li>
+                <li>Form component library (web) + button library (native)</li>
+                <li>Loading/skeleton states — consistent across all screens</li>
+                <li>Image optimization — responsive Cloudinary transforms</li>
+              </ul>
+              <div class="roadmap-output">Output: Cohesive, premium feel across entire mobile experience</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /strategy -->
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       NATIVE APP AUDIT
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="tab-native" class="section">
+
+    <div class="hero">
+      <div class="hero-eyebrow">Native App Audit · The Club</div>
+      <h1 class="hero-title">React Native<br><em>iOS + Android</em><br>Full Audit</h1>
+      <div class="hero-meta">
+        <span>Branch: fddeploy</span>
+        <span>Date: March 17, 2026</span>
+        <span>React Native</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">70+</div>
+          <div class="hero-stat-label">Colors defined</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">23</div>
+          <div class="hero-stat-label">Font sizes</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">763</div>
+          <div class="hero-stat-label">Hardcoded values</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4/10</div>
+          <div class="hero-stat-label">Component library</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--color-white); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="page-section">
+
+          <div class="callout">
+            <div class="callout-title">Executive Summary</div>
+            <div class="callout-body">The Club has solid architectural foundations — proper navigation type-safety, reasonable separation of concerns, good list performance via FlashList — but suffers from significant design system inconsistency, typography chaos (23 font sizes), accessibility gaps, and scattered UX debt. It feels utilitarian rather than luxurious. The codebase prioritizes functionality over visual polish, with hardcoded values proliferating across 154 files (763 occurrences).</div>
+          </div>
+
+          <div class="section-rule"></div>
+
+          <!-- Top 10 -->
+          <div class="section-header">
+            <span class="section-eyebrow">Priority Issues</span>
+            <h2 class="section-title">Top 10 <em>Critical Fixes</em></h2>
+          </div>
+
+          <table class="issue-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Issue</th>
+                <th>Location</th>
+                <th>Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="issue-num">1</span></td>
+                <td><div class="issue-title">Color system fragmentation — 70+ colors, 4 error reds, 763 hardcoded values</div></td>
+                <td><div class="issue-location">src/styles/Theme.ts, all component styles</div></td>
+                <td><div class="issue-fix">Consolidate to ~30 colors, enforce via ESLint, create semantic tokens</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">2</span></td>
+                <td><div class="issue-title">Typography chaos — 23 sizes, confusing names, no hierarchy</div></td>
+                <td><div class="issue-location">src/styles/Theme.ts</div></td>
+                <td><div class="issue-fix">Reduce to 8 sizes max, define semantic tokens (h1/h2/body/caption)</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">3</span></td>
+                <td><div class="issue-title">Accessibility absent — 80%+ of interactive elements missing labels/roles</div></td>
+                <td><div class="issue-location">All components</div></td>
+                <td><div class="issue-fix">Audit every touchable, add labels + roles + hitSlop, test VoiceOver/TalkBack</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">4</span></td>
+                <td><div class="issue-title">Inline styles replace design system throughout</div></td>
+                <td><div class="issue-location">All component files</div></td>
+                <td><div class="issue-fix">ESLint rule against hardcoded px values; extract to StyleSheet.create() outside render</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">5</span></td>
+                <td><div class="issue-title">Modal presentation inconsistency + 8 deprecated screens</div></td>
+                <td><div class="issue-location">src/app-navigation/RootStack.tsx</div></td>
+                <td><div class="issue-fix">Define clear modal rules, remove deprecated screens</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">6</span></td>
+                <td><div class="issue-title">Deep linking incomplete — 6 of 26+ routes mapped</div></td>
+                <td><div class="issue-location">src/app-navigation/linking.ts</div></td>
+                <td><div class="issue-fix">Map all major screens, add URL validation, test both platforms</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">7</span></td>
+                <td><div class="issue-title">No form component library — inputs unstyled, no validation feedback</div></td>
+                <td><div class="issue-location">src/components/</div></td>
+                <td><div class="issue-fix">Build LabeledInput, FormError, FormSection with consistent focus/error states</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">8</span></td>
+                <td><div class="issue-title">Spacing system ignored — 30+ magic numbers override tokens</div></td>
+                <td><div class="issue-location">All component files</div></td>
+                <td><div class="issue-fix">Add xs (4), xl (48) tokens, ESLint enforcement, refactor to Theme.spacing</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">9</span></td>
+                <td><div class="issue-title">Loading/error states inconsistent — hidden in prod, no skeletons</div></td>
+                <td><div class="issue-location">src/components/error-notifier/</div></td>
+                <td><div class="issue-fix">Show errors in prod (generic message), build SkeletonLoader, disable buttons during submission</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">10</span></td>
+                <td><div class="issue-title">Button system fragmented — 3 different heights, BottomButtons hardcoded</div></td>
+                <td><div class="issue-location">src/components/member/BottomButtons.tsx</div></td>
+                <td><div class="issue-fix">Define button variants (primary/secondary/tertiary), standard height 48, support small/medium/large</div></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr class="divider" />
+
+          <!-- Design System Detail -->
+          <div class="section-header">
+            <span class="section-eyebrow">Design System</span>
+            <h2 class="section-title">Typography & <em>Color Chaos</em></h2>
+          </div>
+
+          <div class="two-col">
+            <div>
+              <div class="comparison-card">
+                <div class="comparison-card-header">
+                  <div class="comparison-card-title">Typography Scale — 23 Sizes</div>
+                </div>
+                <div class="comparison-card-body">
+                  <div class="comparison-row"><div class="comparison-label">xxxLarge</div><div class="comparison-value warn">56px — Rarely used</div></div>
+                  <div class="comparison-row"><div class="comparison-label">xxLarge</div><div class="comparison-value bad">32px — Never found in use</div></div>
+                  <div class="comparison-row"><div class="comparison-label">extraLarge</div><div class="comparison-value bad">30px — Overlaps xLargePlus</div></div>
+                  <div class="comparison-row"><div class="comparison-label">xLargePlus</div><div class="comparison-value bad">28px — Confusing naming</div></div>
+                  <div class="comparison-row"><div class="comparison-label">xlarge</div><div class="comparison-value bad">26px — Overlaps with large</div></div>
+                  <div class="comparison-row"><div class="comparison-label">large</div><div class="comparison-value">24px — OK</div></div>
+                  <div class="comparison-row"><div class="comparison-label">subtitleLarge</div><div class="comparison-value warn">22px — Overlaps subtitle</div></div>
+                  <div class="comparison-row"><div class="comparison-label">mediumMiddleLarge</div><div class="comparison-value bad">17px — Confusing name</div></div>
+                  <div class="comparison-row"><div class="comparison-label">smallMedium</div><div class="comparison-value bad">15px — Barely different from small</div></div>
+                  <div class="comparison-row"><div class="comparison-label">smallPlus</div><div class="comparison-value bad">13px — Barely different from small</div></div>
+                  <div class="comparison-row"><div class="comparison-label">pickerSize</div><div class="comparison-value bad">20px — Duplicate of subtitle</div></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="callout critical" style="margin-bottom: 16px;">
+                <div class="callout-title">Color Fragmentation</div>
+                <div class="callout-body">
+                  <strong>4 different error reds:</strong> #EB5851, #f52d00, #E02B00, #E85255<br><br>
+                  <strong>3 different greens for status:</strong> #1D8139, #718991, #09d9e0<br><br>
+                  <strong>15+ gray shades</strong> with confusing naming: light1–6, dark1–3, mediumDark, neutral<br><br>
+                  <strong>Opacity hack:</strong> <code>colors.states.error + '10'</code> instead of proper alpha utility
+                </div>
+              </div>
+              <div class="comparison-card">
+                <div class="comparison-card-header">
+                  <div class="comparison-card-title">Component Library — 4/10</div>
+                </div>
+                <div class="comparison-card-body">
+                  <div class="comparison-row"><div class="comparison-label">ClubText</div><div class="comparison-value bad">No default styles; not a real design system component</div></div>
+                  <div class="comparison-row"><div class="comparison-label">ClubTextInput</div><div class="comparison-value bad">No focus state, no placeholder styling</div></div>
+                  <div class="comparison-row"><div class="comparison-label">Checkbox</div><div class="comparison-value bad">StyleSheet inside render, magic numbers (24x30 vs 18x24)</div></div>
+                  <div class="comparison-row"><div class="comparison-label">HR</div><div class="comparison-value bad">Default white backgroundColor — invisible on white</div></div>
+                  <div class="comparison-row"><div class="comparison-label">BottomButtons</div><div class="comparison-value bad">Hardcoded width 160, height 50; not responsive</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <!-- Screen-by-screen accordion -->
+          <div class="section-header">
+            <span class="section-eyebrow">Screen Reviews</span>
+            <h2 class="section-title">Screen-by-Screen <em>Findings</em></h2>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-header">
+              <span class="badge badge-native">Navigation</span>
+              <span class="accordion-title">Navigation Architecture</span>
+              <span class="accordion-count">5 issues</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div style="padding: 24px 28px;">
+                <div class="two-col" style="margin-bottom: 0;">
+                  <div>
+                    <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-p2);margin-bottom:12px;">Strengths</p>
+                    <ul class="finding-list strengths">
+                      <li>Type-safe navigation via RootStackParamList in src/app-navigation/RootStackParam.tsx</li>
+                      <li>Clear separation of auth states (Loading → Login → Tabs) in RootStack.tsx</li>
+                      <li>Modal/transparentModal grouping for presentation control</li>
+                      <li>Deep linking config exists with prefixes theclub:// and thesourcev2://</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-p0);margin-bottom:12px;">Issues</p>
+                    <ul class="finding-list issues">
+                      <li>Two modal strategies with no clear pattern — modal vs transparentModal mixed inconsistently</li>
+                      <li>Only 6 routes mapped via deep link; 20+ key screens unreachable (no property, destination, FlightInfo, Connect, Settings)</li>
+                      <li>8 screens still present with _DEPRECATED_ naming (PdfModal, PostTripSurvey, ClubJournal, etc.)</li>
+                      <li>No beforeRemove listeners — back navigation handling inconsistent</li>
+                      <li>Untyped any fields in RootStackParam.tsx (e.g., UpdateConfirmation.data)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-header">
+              <span class="badge badge-native">Screen</span>
+              <span class="accordion-title">Login + Explore + Destination + Property</span>
+              <span class="accordion-count">12 issues</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div style="padding: 24px 28px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+                  <div>
+                    <p style="font-size:12px;font-weight:600;margin-bottom:10px;color:var(--color-text);">Login</p>
+                    <ul class="finding-list issues">
+                      <li>Status bar hardcoded white</li>
+                      <li>Platform-specific font sizes as magic numbers</li>
+                      <li>No accessibility labels on any buttons</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p style="font-size:12px;font-weight:600;margin-bottom:10px;color:var(--color-text);">Explore / Search</p>
+                    <ul class="finding-list issues">
+                      <li>Filter button lacks active state visual</li>
+                      <li>No focus state on search input</li>
+                      <li>Loading indicator positioned poorly in list items</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p style="font-size:12px;font-weight:600;margin-bottom:10px;color:var(--color-text);">Destination Screen</p>
+                    <ul class="finding-list issues">
+                      <li>Styling uses hardcoded colors</li>
+                      <li>Custom modal header inconsistency unclear</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p style="font-size:12px;font-weight:600;margin-bottom:10px;color:var(--color-text);">Property Screen</p>
+                    <ul class="finding-list issues">
+                      <li>Multiple hardcoded border radius values (15, 8 — not tokens)</li>
+                      <li>Calendar tappable while data loads (no visual feedback)</li>
+                      <li>Width calculation calendarWidth/7 magic math</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-header">
+              <span class="badge badge-native">Screen</span>
+              <span class="accordion-title">Get Ready · Cancellation · Connect · Forms</span>
+              <span class="accordion-count">10 issues</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div style="padding: 24px 28px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+                  <div>
+                    <p style="font-size:12px;font-weight:600;margin-bottom:10px;color:var(--color-text);">Get Ready / Pre-Trip</p>
+                    <ul class="finding-list issues">
+                      <li>No visual feedback for incomplete checklist sections</li>
+                      <li>Inconsistent input styling</li>
+                      <li>Spacing inconsistencies throughout</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p style="font-size:12px;font-weight:600;margin-bottom:10px;color:var(--color-text);">Cancellation</p>
+                    <ul class="finding-list issues">
+                      <li>colors.states.error + '10' opacity hack</li>
+                      <li>Hardcoded ambassador photo size (100x100)</li>
+                      <li>Button sizing inconsistent (minHeight: 50 vs height: 50)</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p style="font-size:12px;font-weight:600;margin-bottom:10px;color:var(--color-text);">Connect / Messaging</p>
+                    <ul class="finding-list issues">
+                      <li>Unread badge not square (19x17)</li>
+                      <li>Font hardcoded as 10 instead of Theme token</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p style="font-size:12px;font-weight:600;margin-bottom:10px;color:var(--color-text);">All Forms</p>
+                    <ul class="finding-list issues">
+                      <li>No consistent input styling — default RN TextInput with inline styling</li>
+                      <li>Only button disable/enable as feedback — no field-level errors</li>
+                      <li>keyboardType specified inconsistently</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-header">
+              <span class="badge badge-native">Accessibility</span>
+              <span class="accordion-title">Accessibility — Critical Gaps</span>
+              <span class="accordion-count">7 issues</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div style="padding: 24px 28px;">
+                <ul class="finding-list issues">
+                  <li>accessibilityLabel missing on 80%+ of interactive elements (buttons, icons, touchables)</li>
+                  <li>hitSlop rarely used — most small touch targets (icons, close buttons) below 44x44pt minimum</li>
+                  <li>No semantic roles — accessibilityRole missing from custom buttons, list items, headings</li>
+                  <li>brand.light (#cadcde) on white: ~2.8:1 — WCAG AAA failure</li>
+                  <li>grey.light4 (#77777D) on white: ~4.5:1 — borderline AA</li>
+                  <li>No live region announcements — filter results update silently</li>
+                  <li>No evidence of VoiceOver/TalkBack testing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <!-- Quick wins -->
+          <div class="section-header">
+            <span class="section-eyebrow">Low Effort, High Impact</span>
+            <h2 class="section-title">Quick <em>Wins</em></h2>
+          </div>
+
+          <div class="quick-wins">
+            <div class="quick-win"><span class="quick-win-time">5 min</span><span class="quick-win-text">Fix HR default: backgroundColor: 'white' → colors.lightGray.light3 (invisible on white backgrounds)</span></div>
+            <div class="quick-win"><span class="quick-win-time">5 min</span><span class="quick-win-text">Fix typo: erroText → errorText in error-notifier/styles.ts</span></div>
+            <div class="quick-win"><span class="quick-win-time">10 sec</span><span class="quick-win-text">Add accessibilityLabel="Open filters" to HeroScreen.tsx filter button</span></div>
+            <div class="quick-win"><span class="quick-win-time">5 min</span><span class="quick-win-text">Unread badge: make square width: 20, height: 20 in elements.ts</span></div>
+            <div class="quick-win"><span class="quick-win-time">2 min</span><span class="quick-win-text">Checkbox hit area: add minHeight: 44 to ensure accessibility minimum</span></div>
+            <div class="quick-win"><span class="quick-win-time">2 min</span><span class="quick-win-text">Messages padding: replace paddingVertical: 20 with spacing.base2</span></div>
+            <div class="quick-win"><span class="quick-win-time">15 min</span><span class="quick-win-text">Algolia error boundary: wrap carousel/result list to catch failures gracefully</span></div>
+            <div class="quick-win"><span class="quick-win-time">20 min</span><span class="quick-win-text">Remove deprecated screens: delete 8 _DEPRECATED_ screens from RootStack.tsx</span></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /native -->
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       MOBILE WEB AUDIT
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="tab-web" class="section">
+
+    <div class="hero">
+      <div class="hero-eyebrow">Mobile Web Audit · The Source v2</div>
+      <h1 class="hero-title">Next.js Portal<br><em>Mobile + Webview</em><br>Full Audit</h1>
+      <div class="hero-meta">
+        <span>Next.js member portal</span>
+        <span>Mobile browser + embedded webview</span>
+        <span>Date: March 17, 2026</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">40px</div>
+          <div class="hero-stat-label">Button height (need 44)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">14px</div>
+          <div class="hero-stat-label">Body text (need 16)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">0</div>
+          <div class="hero-stat-label">Webview detection</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">61KB</div>
+          <div class="hero-stat-label">global.css overrides</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--color-white); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="page-section">
+
+          <div class="callout">
+            <div class="callout-title">Executive Summary</div>
+            <div class="callout-body">The Source v2 has a solid mobile foundation — thoughtful navigation patterns, responsive typography, and drawer-based modals. However, critical gaps in touch targets, keyboard avoidance, image optimization, and webview context awareness fall short of luxury product standards. Most significantly: the app has no awareness that it runs inside The Club native app, meaning it shows redundant navigation and footer inside the webview.</div>
+          </div>
+
+          <div class="section-rule"></div>
+
+          <!-- Top 10 -->
+          <div class="section-header">
+            <span class="section-eyebrow">Priority Issues</span>
+            <h2 class="section-title">Top 10 <em>Mobile Fixes</em></h2>
+          </div>
+
+          <table class="issue-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Issue</th>
+                <th>Location</th>
+                <th>Fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="issue-num">1</span></td>
+                <td><div class="issue-title">Button touch targets below 44px (size-md = 40px)</div></td>
+                <td><div class="issue-location">components/Common/Button/styles.ts:141</div></td>
+                <td><div class="issue-fix">Enforce 44px minimum across all interactive elements</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">2</span></td>
+                <td><div class="issue-title">No sticky CTA on search/booking flows</div></td>
+                <td><div class="issue-location">pages/search.tsx, booking modal</div></td>
+                <td><div class="issue-fix">Add position:sticky bottom container with CTA + safe-area-inset-bottom</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">3</span></td>
+                <td><div class="issue-title">No webview detection — redundant nav/footer inside native app</div></td>
+                <td><div class="issue-location">pages/_app.tsx</div></td>
+                <td><div class="issue-fix">Add isWebview utility; conditionally hide footer, simplify nav</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">4</span></td>
+                <td><div class="issue-title">Cloudinary images not optimized for mobile</div></td>
+                <td><div class="issue-location">All CloudinaryImage components</div></td>
+                <td><div class="issue-fix">Add responsive w_ transforms; cap at 90vw on mobile</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">5</span></td>
+                <td><div class="issue-title">Forms don't account for soft keyboard</div></td>
+                <td><div class="issue-location">All form pages</div></td>
+                <td><div class="issue-fix">Scroll-to-field on focus; padding-bottom adjustment when keyboard open</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">6</span></td>
+                <td><div class="issue-title">Body text at 14px (below mobile minimum)</div></td>
+                <td><div class="issue-location">styles/theme.ts:122</div></td>
+                <td><div class="issue-fix">Increase body to 16px on xs/sm breakpoints</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">7</span></td>
+                <td><div class="issue-title">No active tab indicator in mobile nav drawer</div></td>
+                <td><div class="issue-location">components/Nav/index.tsx:456</div></td>
+                <td><div class="issue-fix">Add background or underline for active nav item</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">8</span></td>
+                <td><div class="issue-title">Tab navigation truncation on ≤375px</div></td>
+                <td><div class="issue-location">TabNav on Profile, MyTrips</div></td>
+                <td><div class="issue-fix">Responsive font size or label abbreviation for xs</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">9</span></td>
+                <td><div class="issue-title">Canela used at h6 (16px mobile)</div></td>
+                <td><div class="issue-location">styles/theme.ts:117</div></td>
+                <td><div class="issue-fix">Restrict Canela to h1–h3 only; always Gotham below 28px</div></td>
+              </tr>
+              <tr>
+                <td><span class="issue-num">10</span></td>
+                <td><div class="issue-title">No back navigation in nested mobile flows</div></td>
+                <td><div class="issue-location">Nav/drawer stacking</div></td>
+                <td><div class="issue-fix">Add back button/breadcrumb to nested states</div></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <hr class="divider" />
+
+          <!-- Section breakdowns -->
+          <div class="section-header">
+            <span class="section-eyebrow">Category Breakdowns</span>
+            <h2 class="section-title">All <em>Findings</em> by Area</h2>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-header">
+              <span class="badge badge-web">Nav</span>
+              <span class="accordion-title">Mobile Navigation</span>
+              <span class="accordion-count">3 issues, 3 strengths</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div style="padding:24px 28px;">
+                <div class="two-col" style="margin-bottom:0;">
+                  <div>
+                    <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-p2);margin-bottom:12px;">Strengths</p>
+                    <ul class="finding-list strengths">
+                      <li>Hamburger menu correctly hidden on mobile; drawer pattern appropriate</li>
+                      <li>Nav height: 64px mobile (reasonable)</li>
+                      <li>Logo/icon sizing appropriate at 48x48px</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-p0);margin-bottom:12px;">Issues</p>
+                    <ul class="finding-list issues">
+                      <li>No active indicator in mobile drawer — display: isMobile ? 'none' : 'flex' hides underline on mobile (Nav/index.tsx line 456)</li>
+                      <li>No breadcrumb or back path in nested states — destination details → modal → back is disorienting</li>
+                      <li>Profile icon lacks touch affordance — no visual indication it's tappable on mobile (Nav/index.tsx:496–505)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-header">
+              <span class="badge badge-web">Type</span>
+              <span class="accordion-title">Typography on Mobile</span>
+              <span class="accordion-count">4 issues</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div style="padding:24px 28px;">
+                <ul class="finding-list issues">
+                  <li>Body text at 14px — below 16px minimum for mobile legibility (styles/theme.ts:122–127)</li>
+                  <li>Canela used at h6 (16px on mobile) — serif at 16px loses elegance; CLAUDE.md requires 28px+ (styles/theme.ts:117–121)</li>
+                  <li>eyebrowSmall and bodyXSmall at 12px — too small on mobile; no responsive bump (styles/theme.ts:188–193)</li>
+                  <li>No max line-length constraint — text stretches edge-to-edge on mobile</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-header">
+              <span class="badge badge-web">Webview</span>
+              <span class="accordion-title">Webview Considerations — Critical</span>
+              <span class="accordion-count">5 critical issues</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div style="padding:24px 28px;">
+                <div class="callout critical" style="margin-bottom:20px;">
+                  <div class="callout-title">Critical — App runs inside The Club native app as a webview</div>
+                  <div class="callout-body">The web app has zero awareness it's running inside a native app. This causes fundamental UX breakdowns on every screen.</div>
+                </div>
+                <ul class="finding-list issues">
+                  <li>No webview detection — footer and full nav render inside webview (redundant, wastes vertical space)</li>
+                  <li>No native bridge — can't access auth tokens, push notifications, native share</li>
+                  <li>External links unhandled — may open inside webview instead of external browser</li>
+                  <li>Android back button conflicts — web history management conflicts with native back</li>
+                  <li>No testing confirmed inside actual The Club app</li>
+                </ul>
+                <div style="margin-top:16px;background:var(--color-bg);padding:14px 16px;border:1px solid var(--color-border);">
+                  <p style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-text);">Recommended Fix</p>
+                  <code style="font-size:12px;color:var(--color-dark-blue);">const isWebview = typeof window !== 'undefined' &amp;&amp; !!window.ReactNativeWebView;</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-header">
+              <span class="badge badge-web">Images</span>
+              <span class="accordion-title">Images &amp; Media — 5 Issues</span>
+              <span class="accordion-count">5 issues</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div style="padding:24px 28px;">
+                <ul class="finding-list issues">
+                  <li>Cloudinary widths not confirmed responsive — images likely fetched at desktop size on mobile (bandwidth waste + layout shift)</li>
+                  <li>next/Image disabled (images: { unoptimized: true } in next.config.mjs) — mobile optimization is entirely manual</li>
+                  <li>No loading="lazy" on images below fold</li>
+                  <li>Carousel images not responsive — full container width, may cause layout shift</li>
+                  <li>Hero image aspect ratio — constants defined but not verified for correct mobile crop</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-header">
+              <span class="badge badge-web">Forms</span>
+              <span class="accordion-title">Forms on Mobile — 5 Issues</span>
+              <span class="accordion-count">5 issues</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-body">
+              <div style="padding:24px 28px;">
+                <ul class="finding-list issues">
+                  <li>Phone input 40px — below 44px minimum (components/Form/InternationalPhoneInput/styles.ts)</li>
+                  <li>No keyboard avoidance — forms obscured by soft keyboard; no scrollIntoView() or padding adjustment</li>
+                  <li>Validation errors hidden by keyboard — ErrorStyled renders below input, not above</li>
+                  <li>No mobile-specific input types — missing type="tel", type="email" for correct keyboards</li>
+                  <li>TextField marginBottom: 32px hardcoded — excessive on small screens</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <!-- Quick wins -->
+          <div class="section-header">
+            <span class="section-eyebrow">Low Effort, High Impact</span>
+            <h2 class="section-title">Quick <em>Wins</em></h2>
+          </div>
+
+          <div class="quick-wins">
+            <div class="quick-win"><span class="quick-win-time">5 min</span><span class="quick-win-text">Change size-md button from 40px → 44px in Button/styles.ts</span></div>
+            <div class="quick-win"><span class="quick-win-time">5 min</span><span class="quick-win-text">Increase phone input from 40px → 44px in InternationalPhoneInput/styles.ts</span></div>
+            <div class="quick-win"><span class="quick-win-time">10 min</span><span class="quick-win-text">Add active indicator to mobile nav drawer (Nav/index.tsx line 456)</span></div>
+            <div class="quick-win"><span class="quick-win-time">15 min</span><span class="quick-win-text">Add isWebview utility and hide footer + nav inside webview</span></div>
+            <div class="quick-win"><span class="quick-win-time">5 min</span><span class="quick-win-text">Restrict Canela to h1–h3 in theme — no Canela below 28px</span></div>
+            <div class="quick-win"><span class="quick-win-time">5 min</span><span class="quick-win-text">Bump body to 16px on xs/sm breakpoints in styles/theme.ts</span></div>
+            <div class="quick-win"><span class="quick-win-time">15 min</span><span class="quick-win-text">Add loading="lazy" to CloudinaryImage components below fold</span></div>
+            <div class="quick-win"><span class="quick-win-time">10 min</span><span class="quick-win-text">Add type="tel" to phone inputs, type="email" to email inputs</span></div>
+            <div class="quick-win"><span class="quick-win-time">10 min</span><span class="quick-win-text">Add aspect-ratio CSS to hero images on mobile</span></div>
+            <div class="quick-win"><span class="quick-win-time">30 min</span><span class="quick-win-text">Add sticky CTA container to search page (position:sticky + safe-area-inset-bottom)</span></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /web -->
+
+
+  <!-- ══════════════════════════════════════════════════════════
+       ALL ISSUES — PRIORITY MATRIX
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="tab-issues" class="section">
+
+    <div class="hero">
+      <div class="hero-eyebrow">Consolidated Priority Matrix</div>
+      <h1 class="hero-title">All Issues<br><em>Ranked by</em><br>Impact × Effort</h1>
+      <div class="hero-meta">
+        <span>Both platforms</span>
+        <span>20 total issues</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">5</div>
+          <div class="hero-stat-label">P0 — Fix first (sprint)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">7</div>
+          <div class="hero-stat-label">P1 — Next quarter</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">8</div>
+          <div class="hero-stat-label">P2 — Polish</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">S M L</div>
+          <div class="hero-stat-label">Effort scale</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--color-white); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="page-section">
+
+          <!-- P0 -->
+          <div class="priority-section">
+            <div class="priority-header">
+              <div class="priority-label p0">P0</div>
+              <div class="priority-desc">Fix First — High impact, achievable in a sprint</div>
+            </div>
+            <div class="priority-cards">
+              <div class="priority-card">
+                <div class="priority-card-num">1</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Webview detection + hide nav/footer inside app</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-web">Web</span></div>
+                <div class="priority-card-effort"><div class="effort-badge s">S</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">2</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Button touch targets: enforce 44px minimum</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-both">Both</span></div>
+                <div class="priority-card-effort"><div class="effort-badge s">S</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">3</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Decide and document native vs web platform ownership</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-both">Strategy</span></div>
+                <div class="priority-card-effort"><div class="effort-badge s">S</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">4</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Stop duplicating Explore/Search in both platforms</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-both">Both</span></div>
+                <div class="priority-card-effort"><div class="effort-badge m">M</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">5</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Active nav indicator in mobile drawer</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-web">Web</span></div>
+                <div class="priority-card-effort"><div class="effort-badge s">S</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- P1 -->
+          <div class="priority-section">
+            <div class="priority-header">
+              <div class="priority-label p1">P1</div>
+              <div class="priority-desc">High Value — Next quarter</div>
+            </div>
+            <div class="priority-cards">
+              <div class="priority-card">
+                <div class="priority-card-num">6</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Unified design token layer (shared colors, type scale, spacing)</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-both">Both</span></div>
+                <div class="priority-card-effort"><div class="effort-badge l">L</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">7</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Sticky CTA on conversion flows (search, booking)</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-web">Web</span></div>
+                <div class="priority-card-effort"><div class="effort-badge m">M</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">8</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Keyboard avoidance on all forms</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-both">Both</span></div>
+                <div class="priority-card-effort"><div class="effort-badge m">M</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">9</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Consolidate native Get Ready flows → web</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-native">Native→Web</span></div>
+                <div class="priority-card-effort"><div class="effort-badge l">L</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">10</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Complete deep linking in native app</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-native">Native</span></div>
+                <div class="priority-card-effort"><div class="effort-badge m">M</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">11</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Responsive Cloudinary images</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-web">Web</span></div>
+                <div class="priority-card-effort"><div class="effort-badge m">M</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">12</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Typography cleanup — reduce to 8 semantic sizes</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-both">Both</span></div>
+                <div class="priority-card-effort"><div class="effort-badge m">M</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- P2 -->
+          <div class="priority-section">
+            <div class="priority-header">
+              <div class="priority-label p2">P2</div>
+              <div class="priority-desc">Polish &amp; Completeness</div>
+            </div>
+            <div class="priority-cards">
+              <div class="priority-card">
+                <div class="priority-card-num">13</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Accessibility audit + remediation (labels, roles, contrast)</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-both">Both</span></div>
+                <div class="priority-card-effort"><div class="effort-badge l">L</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">14</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Form component library (consistent inputs across web)</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-web">Web</span></div>
+                <div class="priority-card-effort"><div class="effort-badge l">L</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">15</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Build native button + component library</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-native">Native</span></div>
+                <div class="priority-card-effort"><div class="effort-badge l">L</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">16</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Native → Web bridge (auth, push, share)</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-both">Both</span></div>
+                <div class="priority-card-effort"><div class="effort-badge l">L</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">17</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Loading/skeleton states (consistent pattern)</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-both">Both</span></div>
+                <div class="priority-card-effort"><div class="effort-badge m">M</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">18</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Remove deprecated screens from native nav</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-native">Native</span></div>
+                <div class="priority-card-effort"><div class="effort-badge s">S</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">19</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Color system consolidation</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-both">Both</span></div>
+                <div class="priority-card-effort"><div class="effort-badge l">L</div></div>
+              </div>
+              <div class="priority-card">
+                <div class="priority-card-num">20</div>
+                <div class="priority-card-content">
+                  <div class="priority-card-title">Error states visible in production</div>
+                </div>
+                <div class="priority-card-platform"><span class="badge badge-native">Native</span></div>
+                <div class="priority-card-effort"><div class="effort-badge m">M</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /issues -->
+
+</div><!-- /main -->
+
+<footer class="site-footer">
+  Exclusive Resorts · Mobile Experience Audit · March 2026 · The Club (React Native) + The Source v2 (Next.js)
+</footer>
+
+<script>
+  // Tab navigation
+  const tabs = document.querySelectorAll('.nav-tab');
+  const sections = document.querySelectorAll('.section');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      sections.forEach(s => {
+        s.classList.remove('visible');
+        if (s.id === 'tab-' + target) {
+          s.classList.add('visible');
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // Accordion
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const acc = header.closest('.accordion');
+      acc.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
