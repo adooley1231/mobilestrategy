@@ -737,6 +737,219 @@
     }
     .highlight-stat-label { font-size: 14px; color: var(--color-muted); }
 
+    /* ── Member Signal Badge ─────────────────────────────────── */
+    .member-signal {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--color-slate);
+      padding: 5px 12px 5px 10px;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .member-signal::before {
+      content: '◈';
+      font-size: 10px;
+      opacity: 0.75;
+    }
+    /* block variant — used inside table cells, shows as a prominent left-border strip */
+    .member-signal-block {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-dark-blue);
+      background: rgba(78, 115, 138, 0.1);
+      border-left: 3px solid var(--color-slate);
+      padding: 7px 12px;
+      margin-top: 8px;
+    }
+    .member-signal-block::before {
+      content: '◈';
+      font-size: 14px;
+      color: var(--color-slate);
+      flex-shrink: 0;
+    }
+
+    /* ── Survey Bar Charts ──────────────────────────────────── */
+    .survey-chart { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .survey-bar-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 52px;
+      align-items: center;
+      gap: 14px;
+    }
+    .survey-bar-label { font-size: 12.5px; color: var(--color-text); text-align: right; }
+    .survey-bar-track {
+      height: 8px;
+      background: var(--color-border);
+      overflow: hidden;
+    }
+    .survey-bar-fill { height: 100%; background: var(--color-slate); transition: width 0.6s ease; }
+    .survey-bar-fill.positive { background: var(--color-p2); }
+    .survey-bar-fill.neutral  { background: var(--color-slate); }
+    .survey-bar-fill.negative { background: var(--color-p0); }
+    .survey-bar-pct { font-size: 12px; font-weight: 600; color: var(--color-muted); text-align: right; }
+
+    /* ── Score Badge ─────────────────────────────────────────── */
+    .score-badge { display: inline-flex; align-items: baseline; gap: 4px; }
+    .score-badge-num {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--color-p1);
+    }
+    .score-badge-num.good { color: var(--color-p2); }
+    .score-badge-denom { font-size: 14px; color: var(--color-muted); }
+
+    /* ── Member Voice Quotes ─────────────────────────────────── */
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--color-border);
+      border: 1px solid var(--color-border);
+      margin-bottom: 40px;
+    }
+    .quote-card {
+      background: var(--color-white);
+      padding: 32px 36px 28px;
+      position: relative;
+    }
+    .quote-card::before {
+      content: '\201C';
+      font-family: var(--font-display);
+      font-size: 80px;
+      font-weight: 300;
+      color: var(--color-border);
+      position: absolute;
+      top: 8px;
+      left: 22px;
+      line-height: 1;
+    }
+    .quote-text {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--color-text);
+      margin-bottom: 16px;
+      padding-top: 28px;
+    }
+    .quote-source {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+    .quote-card.featured {
+      grid-column: span 2;
+      background: var(--color-dark-blue);
+    }
+    .quote-card.featured::before { color: rgba(255,255,255,0.08); }
+    .quote-card.featured .quote-text { color: rgba(255,255,255,0.92); }
+    .quote-card.featured .quote-source { color: rgba(255,255,255,0.4); }
+
+    /* ── Crossover Analysis Cards ────────────────────────────── */
+    .crossover-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--color-border);
+      border: 1px solid var(--color-border);
+      margin-bottom: 40px;
+    }
+    .crossover-card {
+      background: var(--color-white);
+      display: grid;
+      grid-template-columns: 4px 1fr 1fr;
+    }
+    .crossover-accent { }
+    .crossover-card.p0 .crossover-accent { background: var(--color-p0); }
+    .crossover-card.p1 .crossover-accent { background: var(--color-p1); }
+    .crossover-card.p2 .crossover-accent { background: var(--color-p2); }
+    .crossover-finding {
+      padding: 28px 32px;
+      border-right: 1px solid var(--color-border);
+    }
+    .crossover-finding-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .crossover-finding-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .crossover-finding-desc {
+      font-size: 13px;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+    .crossover-evidence {
+      padding: 28px 32px;
+      background: var(--color-surface);
+    }
+    .crossover-evidence-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-slate);
+      margin-bottom: 10px;
+    }
+    .crossover-stat {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 300;
+      color: var(--color-dark-blue);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .crossover-stat-sub {
+      font-size: 13px;
+      color: var(--color-muted);
+      margin-bottom: 12px;
+    }
+    .crossover-quote-inline {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--color-text);
+      line-height: 1.55;
+      border-left: 2px solid var(--color-slate);
+      padding-left: 12px;
+      margin-top: 10px;
+    }
+
+    /* ── Frequency List ─────────────────────────────────────── */
+    .freq-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+    .freq-item {
+      display: grid;
+      grid-template-columns: 240px 40px 1fr;
+      align-items: center;
+      gap: 12px;
+    }
+    .freq-label { font-size: 13px; color: var(--color-text); }
+    .freq-count { font-size: 13px; font-weight: 600; color: var(--color-slate); text-align: right; }
+    .freq-bar-track { height: 6px; background: var(--color-border); }
+    .freq-bar-fill { height: 100%; background: var(--color-slate); opacity: 0.55; }
+
     /* ── Footer ──────────────────────────────────────────────── */
     .site-footer {
       background: var(--color-dark-blue);
@@ -771,6 +984,7 @@
     <button class="nav-tab" data-tab="native">The Club — Native App</button>
     <button class="nav-tab" data-tab="web">The Source v2 — Mobile Web</button>
     <button class="nav-tab" data-tab="issues">All Issues</button>
+    <button class="nav-tab" data-tab="survey">Member Survey</button>
   </div>
 </nav>
 
@@ -782,106 +996,308 @@
   <div id="tab-overview" class="section visible">
 
     <div class="hero">
-      <div class="hero-eyebrow">Mobile Experience Audit · March 2026</div>
-      <h1 class="hero-title">The Club &amp; <em>The Source</em><br>Mobile Audit</h1>
+      <div class="hero-eyebrow">2026 Member Survey + Mobile Audit · March 2026</div>
+      <h1 class="hero-title">Members told us<br><em>what's broken.</em><br>The audit explains why.</h1>
       <div class="hero-meta">
-        <span>React Native (iOS + Android)</span>
-        <span>Next.js Mobile Web + Webview</span>
-        <span>Scope: Full UX/UI Audit</span>
+        <span>627 Members Surveyed</span>
+        <span>The Club (iOS + Android)</span>
+        <span>The Source v2 (Mobile Web)</span>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="hero-stat-num">763</div>
-          <div class="hero-stat-label">Hardcoded color values</div>
+          <div class="hero-stat-num">3.50</div>
+          <div class="hero-stat-label">App portal score / 5</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">20</div>
-          <div class="hero-stat-label">Priority issues logged</div>
+          <div class="hero-stat-num">64</div>
+          <div class="hero-stat-label">Members: booking is stressful</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">5</div>
-          <div class="hero-stat-label">P0 fixes (sprint 1)</div>
+          <div class="hero-stat-num">13</div>
+          <div class="hero-stat-label">Members: hard to navigate on phone</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">4</div>
-          <div class="hero-stat-label">Phases to completion</div>
+          <div class="hero-stat-num">7</div>
+          <div class="hero-stat-label">Members: forced to switch app ↔ browser</div>
         </div>
       </div>
     </div>
 
+    <!-- ── What Members Are Telling Us ──────────────────────── -->
     <div style="background: var(--color-white); border-bottom: 1px solid var(--color-border);">
       <div class="container">
         <div class="page-section">
           <div class="section-rule"></div>
           <div class="section-header">
-            <span class="section-eyebrow">The Core Problem</span>
+            <span class="section-eyebrow">2026 Annual Survey · n=627</span>
           </div>
-          <div class="callout critical">
-            <div class="callout-title">Fractured Mobile Product</div>
-            <div class="callout-body">Members experience a fragmented product — a native app (The Club) that embeds the web portal (The Source v2) as a webview, but neither product knows the other exists. The native app has no design system coherence. The web app doesn't know it's running on a phone. The result is redundant navigation, inconsistent visual language, no shared ownership of features, and a luxury product that doesn't feel luxurious on the platform where most members will use it.</div>
-          </div>
+          <h2 class="section-title">What members are <em>telling us</em></h2>
+          <p style="font-size:14px; color:var(--color-muted); max-width:620px; margin-bottom:48px; line-height:1.75;">These themes emerged from open-text responses — members weren't asked about mobile. They volunteered it. The technical audits explain exactly what's causing each experience.</p>
 
-          <div class="category-grid">
-            <div class="category-card">
-              <div class="category-card-num">2</div>
-              <div class="category-card-title">Design Systems</div>
-              <div class="category-card-desc">No shared design tokens between native and web. 70+ colors in native, 4 error reds, 23 font sizes. Raleway + Canela vs. Gotham + Canela.</div>
-              <div class="category-card-footer">
-                <span class="badge badge-native">Native</span>
-                <span class="badge badge-web">Web</span>
-              </div>
-            </div>
-            <div class="category-card">
-              <div class="category-card-num">6</div>
-              <div class="category-card-title">Webview Gap</div>
-              <div class="category-card-desc">The web app runs blind inside The Club. Redundant nav + footer shown, no auth bridge, Android back conflicts, external links unhandled.</div>
-              <div class="category-card-footer">
-                <span class="badge badge-web">Web</span>
-              </div>
-            </div>
-            <div class="category-card">
-              <div class="category-card-num">80%</div>
-              <div class="category-card-title">Accessibility Gap</div>
-              <div class="category-card-desc">80%+ of interactive elements missing accessibility labels. Touch targets below 44px. No VoiceOver/TalkBack testing documented.</div>
-              <div class="category-card-footer">
-                <span class="badge badge-native">Native</span>
-                <span class="badge badge-web">Web</span>
-              </div>
-            </div>
-            <div class="category-card">
-              <div class="category-card-num">40px</div>
-              <div class="category-card-title">Touch Targets</div>
-              <div class="category-card-desc">Standard is 44px. Both platforms fall short — medium buttons at 40px, phone inputs at 40px, icon tap areas unconfirmed.</div>
-              <div class="category-card-footer">
-                <span class="badge badge-native">Native</span>
-                <span class="badge badge-web">Web</span>
-              </div>
-            </div>
-            <div class="category-card">
-              <div class="category-card-num">6/26</div>
-              <div class="category-card-title">Deep Links Mapped</div>
-              <div class="category-card-desc">Only 6 of 26+ routes are reachable via deep link. No property, destination, FlightInfo, Connect, or Settings screens linked.</div>
-              <div class="category-card-footer">
-                <span class="badge badge-native">Native</span>
-              </div>
-            </div>
-            <div class="category-card">
-              <div class="category-card-num">0</div>
-              <div class="category-card-title">Sticky CTAs</div>
-              <div class="category-card-desc">No sticky CTA on search, booking, or trip detail flows. Keyboard covers the CTA button. Users must scroll to complete conversion actions.</div>
-              <div class="category-card-footer">
-                <span class="badge badge-web">Web</span>
-              </div>
-            </div>
-          </div>
+          <!-- 4 Member Problem Cards -->
+          <div style="display:flex; flex-direction:column; gap:1px; background:var(--color-border); border:1px solid var(--color-border); margin-bottom:48px;">
 
-          <div class="callout">
-            <div class="callout-title">What Good Looks Like</div>
-            <div class="callout-body">A member opens the app → native dashboard (fast, offline-capable) → taps Explore → seamless web transition, no double nav, no footer → browses with sticky CTAs → books a trip with keyboard-safe forms → sees My Trips → taps Connect → native real-time messaging, never leaves native. Everything at 16px+ body text, 44px+ tap targets, Canela only at 28px+.</div>
-          </div>
+            <!-- Problem 1: Booking Stress -->
+            <div style="display:grid; grid-template-columns:200px 1fr 1fr; background:var(--color-white);">
+              <div style="background:var(--color-dark-blue); padding:32px 28px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <div style="font-family:var(--font-display); font-size:56px; font-weight:300; color:#fff; line-height:1;">64</div>
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:8px;">members</div>
+              </div>
+              <div style="padding:28px 32px; border-right:1px solid var(--color-border);">
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-p0); margin-bottom:12px;">Booking Feels Stressful</div>
+                <p style="font-family:var(--font-display); font-size:18px; font-style:italic; font-weight:300; color:var(--color-text); line-height:1.6; margin-bottom:16px;">"I find it frustrating and hard to navigate especially from my phone. Lots of glitches and difficulty accessing what's open at a glance."</p>
+                <p style="font-size:13px; color:var(--color-muted); line-height:1.6;">Booking felt "competitive or stressful" — the #1 single complaint in the survey. Members on mobile can't see or reach the booking action when the keyboard is open.</p>
+              </div>
+              <div style="padding:28px 32px; background:var(--color-surface);">
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-slate); margin-bottom:12px;">What the Audit Found</div>
+                <ul style="font-size:13px; color:var(--color-muted); line-height:1.7; padding-left:16px; margin:0 0 12px;">
+                  <li>No sticky CTA on search/booking flows — keyboard buries the action button</li>
+                  <li>Forms don't account for soft keyboard — no scroll-to-field on focus</li>
+                  <li>Touch targets at 40px, below 44px minimum — small buttons under pressure</li>
+                </ul>
+                <span class="badge badge-web">The Source v2</span>
+              </div>
+            </div>
+
+            <!-- Problem 2: Navigation Confusion -->
+            <div style="display:grid; grid-template-columns:200px 1fr 1fr; background:var(--color-white);">
+              <div style="background:var(--color-dark-blue); padding:32px 28px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <div style="font-family:var(--font-display); font-size:56px; font-weight:300; color:#fff; line-height:1;">13</div>
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:8px;">members</div>
+              </div>
+              <div style="padding:28px 32px; border-right:1px solid var(--color-border);">
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-p0); margin-bottom:12px;">Hard to Navigate on Phone</div>
+                <p style="font-family:var(--font-display); font-size:18px; font-style:italic; font-weight:300; color:var(--color-text); line-height:1.6; margin-bottom:16px;">"I find the system very difficult on my phone."</p>
+                <p style="font-size:13px; color:var(--color-muted); line-height:1.6;">The most common unprompted complaint. Members can't tell where they are in the app or how to get back. "Difficult to navigate" was named 13 times without being asked.</p>
+              </div>
+              <div style="padding:28px 32px; background:var(--color-surface);">
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-slate); margin-bottom:12px;">What the Audit Found</div>
+                <ul style="font-size:13px; color:var(--color-muted); line-height:1.7; padding-left:16px; margin:0 0 12px;">
+                  <li>No active state in mobile nav drawer — members don't know where they are</li>
+                  <li>No back navigation in nested flows — destination → detail → back is disorienting</li>
+                  <li>Native app shows web nav AND native nav simultaneously inside the webview</li>
+                </ul>
+                <span class="badge badge-native">The Club</span>
+                <span class="badge badge-web" style="margin-left:6px;">The Source v2</span>
+              </div>
+            </div>
+
+            <!-- Problem 3: App vs Browser Switching -->
+            <div style="display:grid; grid-template-columns:200px 1fr 1fr; background:var(--color-white);">
+              <div style="background:var(--color-dark-blue); padding:32px 28px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <div style="font-family:var(--font-display); font-size:56px; font-weight:300; color:#fff; line-height:1;">7</div>
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:8px;">members</div>
+              </div>
+              <div style="padding:28px 32px; border-right:1px solid var(--color-border);">
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-p1); margin-bottom:12px;">Forced to Switch App ↔ Browser</div>
+                <p style="font-family:var(--font-display); font-size:18px; font-style:italic; font-weight:300; color:var(--color-text); line-height:1.6; margin-bottom:16px;">"I don't like the switching back and forth. I think it should all be on the app."</p>
+                <p style="font-size:13px; color:var(--color-muted); line-height:1.6;">Members start a task in the app, hit a wall, and open their browser to finish it. The app and the website do the same things — but differently — with no clear ownership.</p>
+              </div>
+              <div style="padding:28px 32px; background:var(--color-surface);">
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-slate); margin-bottom:12px;">What the Audit Found</div>
+                <ul style="font-size:13px; color:var(--color-muted); line-height:1.7; padding-left:16px; margin:0 0 12px;">
+                  <li>Platform ownership undocumented — no decision on what lives where</li>
+                  <li>Explore and Search built independently in both native and web</li>
+                  <li>Web runs inside the native app as an undetected webview — no context sharing</li>
+                </ul>
+                <span class="badge badge-both">Both Platforms</span>
+              </div>
+            </div>
+
+            <!-- Problem 4: Browse is Unusable -->
+            <div style="display:grid; grid-template-columns:200px 1fr 1fr; background:var(--color-white);">
+              <div style="background:var(--color-dark-blue); padding:32px 28px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                <div style="font-family:var(--font-display); font-size:56px; font-weight:300; color:#fff; line-height:1;">49</div>
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:8px;">members</div>
+              </div>
+              <div style="padding:28px 32px; border-right:1px solid var(--color-border);">
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-p1); margin-bottom:12px;">Can't Browse Residences on Mobile</div>
+                <p style="font-family:var(--font-display); font-size:18px; font-style:italic; font-weight:300; color:var(--color-text); line-height:1.6; margin-bottom:16px;">"320 residences available in next 90 days but you have to go into each destination residence by residence."</p>
+                <p style="font-size:13px; color:var(--color-muted); line-height:1.6;">49 members said the booking window misaligns with how they plan travel. The browse experience forces one-by-one exploration with no filter persistence or list view.</p>
+              </div>
+              <div style="padding:28px 32px; background:var(--color-surface);">
+                <div style="font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-slate); margin-bottom:12px;">What the Audit Found</div>
+                <ul style="font-size:13px; color:var(--color-muted); line-height:1.7; padding-left:16px; margin:0 0 12px;">
+                  <li>Duplicate Explore surface in native and web — no single source of truth</li>
+                  <li>No list view — members must tap into each property individually</li>
+                  <li>Images unoptimized for mobile — slow loads degrade the browse experience</li>
+                </ul>
+                <span class="badge badge-native">The Club</span>
+                <span class="badge badge-web" style="margin-left:6px;">The Source v2</span>
+              </div>
+            </div>
+
+          </div><!-- /member problem cards -->
         </div>
       </div>
     </div>
+
+    <!-- ── 30-Day Action Plan ──────────────────────────────────── -->
+    <div style="background: var(--color-bg); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="page-section">
+          <div class="section-rule"></div>
+          <div class="section-header">
+            <span class="section-eyebrow">30-Day Plan · Driven by Member Feedback</span>
+          </div>
+          <h2 class="section-title">What we fix <em>first</em></h2>
+          <p style="font-size:14px; color:var(--color-muted); max-width:620px; margin-bottom:48px; line-height:1.75;">Every action below is tied directly to something members reported. Effort estimates are conservative. All of Week 1 can ship in a single sprint.</p>
+
+          <div class="roadmap">
+
+            <div class="roadmap-phase">
+              <div class="roadmap-phase-num">Week 1</div>
+              <div class="roadmap-phase-title">Fix Booking</div>
+              <div class="roadmap-phase-time">Days 1–7 · <em>64 members asked for this</em></div>
+              <ul class="roadmap-items">
+                <li>Add sticky CTA to booking + search flows <span style="color:var(--color-p2);font-size:11px;font-weight:600;">30 min</span></li>
+                <li>Fix keyboard avoidance — scroll-to-field on form focus <span style="color:var(--color-p2);font-size:11px;font-weight:600;">2 hrs</span></li>
+                <li>Raise touch targets 40px → 44px on web buttons + inputs <span style="color:var(--color-p2);font-size:11px;font-weight:600;">5 min</span></li>
+                <li>Add loading + error states to booking flows <span style="color:var(--color-p2);font-size:11px;font-weight:600;">4 hrs</span></li>
+              </ul>
+              <div class="roadmap-output">Member impact: Booking feels responsive and reachable on mobile</div>
+            </div>
+
+            <div class="roadmap-phase">
+              <div class="roadmap-phase-num">Week 2</div>
+              <div class="roadmap-phase-title">Fix Navigation</div>
+              <div class="roadmap-phase-time">Days 8–14 · <em>13 members asked for this</em></div>
+              <ul class="roadmap-items">
+                <li>Add active state to mobile nav drawer <span style="color:var(--color-p2);font-size:11px;font-weight:600;">10 min</span></li>
+                <li>Add webview detection — hide duplicate nav + footer <span style="color:var(--color-p2);font-size:11px;font-weight:600;">15 min</span></li>
+                <li>Add back navigation + breadcrumb to nested flows <span style="color:var(--color-p2);font-size:11px;font-weight:600;">4 hrs</span></li>
+                <li>Fix native touch targets on icon-only buttons <span style="color:var(--color-p2);font-size:11px;font-weight:600;">1 hr</span></li>
+              </ul>
+              <div class="roadmap-output">Member impact: Members know where they are and how to get back</div>
+            </div>
+
+            <div class="roadmap-phase">
+              <div class="roadmap-phase-num">Week 3</div>
+              <div class="roadmap-phase-title">Unify App + Web</div>
+              <div class="roadmap-phase-time">Days 15–21 · <em>7 members asked for this</em></div>
+              <ul class="roadmap-items">
+                <li>Document platform ownership — what lives where <span style="color:var(--color-p2);font-size:11px;font-weight:600;">Decision</span></li>
+                <li>Remove 8 deprecated screens from native app <span style="color:var(--color-p2);font-size:11px;font-weight:600;">1 hr</span></li>
+                <li>Build auth bridge for webview context sharing <span style="color:var(--color-p1);font-size:11px;font-weight:600;">3 days</span></li>
+                <li>Consolidate Explore to web as single source of truth <span style="color:var(--color-p1);font-size:11px;font-weight:600;">3 days</span></li>
+              </ul>
+              <div class="roadmap-output">Member impact: One coherent experience — app and browser feel the same</div>
+            </div>
+
+            <div class="roadmap-phase">
+              <div class="roadmap-phase-num">Week 4</div>
+              <div class="roadmap-phase-title">Fix Browse</div>
+              <div class="roadmap-phase-time">Days 22–30 · <em>49 members asked for this</em></div>
+              <ul class="roadmap-items">
+                <li>Optimize Cloudinary images for mobile viewports <span style="color:var(--color-p2);font-size:11px;font-weight:600;">1 day</span></li>
+                <li>Add list view to destination browse <span style="color:var(--color-p1);font-size:11px;font-weight:600;">3 days</span></li>
+                <li>Add skeleton loading states to browse + search <span style="color:var(--color-p2);font-size:11px;font-weight:600;">3 hrs</span></li>
+                <li>Begin unified design token layer (native + web) <span style="color:var(--color-p1);font-size:11px;font-weight:600;">Ongoing</span></li>
+              </ul>
+              <div class="roadmap-output">Member impact: Finding and comparing residences works on a phone</div>
+            </div>
+
+          </div><!-- /roadmap -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ── The Audits Confirm It ──────────────────────────────── -->
+    <div style="background: var(--color-dark-blue); padding: 80px 40px 72px; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div class="container">
+
+        <div style="text-align:center; margin-bottom:56px;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:16px;">Independent Validation</div>
+          <h2 style="font-family:var(--font-display); font-size:52px; font-weight:300; color:#fff; line-height:1.15; margin:0 0 20px;">The audits confirm<br><em>what members are saying.</em></h2>
+          <p style="font-size:14px; color:rgba(255,255,255,0.45); max-width:540px; margin:0 auto; line-height:1.8;">The native app audit and mobile web audit were conducted independently of the survey. They identify the same four root causes members reported — which means the fixes will directly improve member experience.</p>
+        </div>
+
+        <svg viewBox="0 0 640 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:600px;display:block;margin:0 auto 64px;">
+
+          <!--
+            Equilateral triangle layout — all three circles r=138, centers ~210px apart
+            Native:  cx=213, cy=160
+            Web:     cx=427, cy=160
+            Survey:  cx=320, cy=330
+            Triple center: (320, 217)
+          -->
+
+          <!-- Three equal circles -->
+          <circle cx="213" cy="160" r="138" fill="rgba(0,71,80,0.6)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <circle cx="427" cy="160" r="138" fill="rgba(78,115,138,0.55)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <circle cx="320" cy="330" r="138" fill="rgba(140,108,48,0.38)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+
+          <!-- Center zone — visible white glow behind text -->
+          <circle cx="320" cy="205" r="80" fill="rgba(255,255,255,0.11)"/>
+
+          <!-- Native App label — upper-left ear -->
+          <text x="120" y="78" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="42" font-weight="300" fill="rgba(255,255,255,0.93)">23</text>
+          <text x="120" y="103" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.6)" letter-spacing="1.5">THE CLUB</text>
+          <text x="120" y="119" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="rgba(255,255,255,0.32)">native app findings</text>
+
+          <!-- Web label — upper-right ear -->
+          <text x="520" y="78" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="42" font-weight="300" fill="rgba(255,255,255,0.93)">18</text>
+          <text x="520" y="103" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.6)" letter-spacing="1.5">THE SOURCE V2</text>
+          <text x="520" y="119" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="rgba(255,255,255,0.32)">mobile web findings</text>
+
+          <!-- Survey label — bottom ear, clear of all overlaps -->
+          <text x="320" y="424" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="42" font-weight="300" fill="rgba(255,255,255,0.93)">627</text>
+          <text x="320" y="449" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="11" font-weight="600" fill="rgba(255,255,255,0.6)" letter-spacing="1.5">MEMBER SURVEY</text>
+          <text x="320" y="465" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="rgba(255,255,255,0.32)">2026 annual responses</text>
+
+          <!-- Center intersection labels — nudged up into true triple overlap -->
+          <text x="320" y="183" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" font-weight="700" fill="rgba(255,255,255,0.45)" letter-spacing="1.8">ALL THREE AGREE</text>
+          <text x="320" y="207" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-style="italic" fill="rgba(255,255,255,0.92)">Navigation</text>
+          <text x="320" y="226" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-style="italic" fill="rgba(255,255,255,0.92)">Fragmentation</text>
+          <text x="320" y="245" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-style="italic" fill="rgba(255,255,255,0.92)">Booking friction</text>
+          <text x="320" y="264" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" font-style="italic" fill="rgba(255,255,255,0.92)">Browse &amp; search</text>
+        </svg>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,0.1);">
+
+          <div style="background:rgba(255,255,255,0.05); padding:32px 36px;">
+            <div style="font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px;">Issue 01</div>
+            <div style="font-family:var(--font-display); font-size:26px; font-weight:300; font-style:italic; color:#fff; margin-bottom:24px; line-height:1.3;">Navigation is broken<br>on mobile</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(255,255,255,0.55); line-height:1.5;"><span style="color:#3A7D54; font-size:11px; margin-top:1px; flex-shrink:0;">✓</span><span>Native Audit: 5 nav issues — no active states, 8 deprecated screens, no back listeners</span></div>
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(255,255,255,0.55); line-height:1.5;"><span style="color:#3A7D54; font-size:11px; margin-top:1px; flex-shrink:0;">✓</span><span>Mobile Web: No active nav indicator, no breadcrumb, no back path in nested states</span></div>
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(176,122,42,0.9); line-height:1.5;"><span style="flex-shrink:0;">◈</span><span>13 members reported "difficult to navigate on phone" — most common unprompted complaint</span></div>
+            </div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.05); padding:32px 36px;">
+            <div style="font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px;">Issue 02</div>
+            <div style="font-family:var(--font-display); font-size:26px; font-weight:300; font-style:italic; color:#fff; margin-bottom:24px; line-height:1.3;">App and web are<br>fragmented</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(255,255,255,0.55); line-height:1.5;"><span style="color:#3A7D54; font-size:11px; margin-top:1px; flex-shrink:0;">✓</span><span>Native Audit: Platform ownership undocumented; Explore &amp; Search duplicated across both apps</span></div>
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(255,255,255,0.55); line-height:1.5;"><span style="color:#3A7D54; font-size:11px; margin-top:1px; flex-shrink:0;">✓</span><span>Mobile Web: Webview runs blind — full nav + footer duplicated inside the native shell</span></div>
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(176,122,42,0.9); line-height:1.5;"><span style="flex-shrink:0;">◈</span><span>7 members: forced to switch back and forth between the app and a browser to complete tasks</span></div>
+            </div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.05); padding:32px 36px; border-top:1px solid rgba(255,255,255,0.08);">
+            <div style="font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px;">Issue 03</div>
+            <div style="font-family:var(--font-display); font-size:26px; font-weight:300; font-style:italic; color:#fff; margin-bottom:24px; line-height:1.3;">Booking creates<br>stress, not ease</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(255,255,255,0.55); line-height:1.5;"><span style="color:#3A7D54; font-size:11px; margin-top:1px; flex-shrink:0;">✓</span><span>Native Audit: No form library, no keyboard avoidance, no loading states or error feedback</span></div>
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(255,255,255,0.55); line-height:1.5;"><span style="color:#3A7D54; font-size:11px; margin-top:1px; flex-shrink:0;">✓</span><span>Mobile Web: No sticky CTA — keyboard buries the booking action at the highest-intent moment</span></div>
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(176,122,42,0.9); line-height:1.5;"><span style="flex-shrink:0;">◈</span><span>64 members: booking felt competitive or stressful — highest-count single complaint in the survey</span></div>
+            </div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.05); padding:32px 36px; border-top:1px solid rgba(255,255,255,0.08);">
+            <div style="font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:12px;">Issue 04</div>
+            <div style="font-family:var(--font-display); font-size:26px; font-weight:300; font-style:italic; color:#fff; margin-bottom:24px; line-height:1.3;">Browse &amp; search<br>don't work on mobile</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(255,255,255,0.55); line-height:1.5;"><span style="color:#3A7D54; font-size:11px; margin-top:1px; flex-shrink:0;">✓</span><span>Native Audit: Duplicate Explore surface, no list view, no filter persistence across sessions</span></div>
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(255,255,255,0.55); line-height:1.5;"><span style="color:#3A7D54; font-size:11px; margin-top:1px; flex-shrink:0;">✓</span><span>Mobile Web: Images unoptimized, carousel not responsive, slow loads degrade browse experience</span></div>
+              <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:rgba(176,122,42,0.9); line-height:1.5;"><span style="flex-shrink:0;">◈</span><span>49 members: booking window misaligned with travel planning — "320 residences, one by one"</span></div>
+            </div>
+          </div>
+
+        </div><!-- /convergence cards -->
+      </div>
+    </div><!-- /convergence visual -->
 
   </div><!-- /overview -->
 
@@ -1174,7 +1590,7 @@
               </tr>
               <tr>
                 <td><span class="issue-num">9</span></td>
-                <td><div class="issue-title">Loading/error states inconsistent — hidden in prod, no skeletons</div></td>
+                <td><div class="issue-title">Loading/error states inconsistent — hidden in prod, no skeletons</div><div class="member-signal-block">3 members: slow / loading issues reported</div></td>
                 <td><div class="issue-location">src/components/error-notifier/</div></td>
                 <td><div class="issue-fix">Show errors in prod (generic message), build SkeletonLoader, disable buttons during submission</div></td>
               </tr>
@@ -1254,6 +1670,7 @@
               <span class="badge badge-native">Navigation</span>
               <span class="accordion-title">Navigation Architecture</span>
               <span class="accordion-count">5 issues</span>
+              <span class="member-signal">13 members: difficult to navigate on phone</span>
               <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-body">
@@ -1288,6 +1705,7 @@
               <span class="badge badge-native">Screen</span>
               <span class="accordion-title">Login + Explore + Destination + Property</span>
               <span class="accordion-count">12 issues</span>
+              <span class="member-signal">4 members: browsing residences is cumbersome</span>
               <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-body">
@@ -1491,13 +1909,13 @@
               </tr>
               <tr>
                 <td><span class="issue-num">2</span></td>
-                <td><div class="issue-title">No sticky CTA on search/booking flows</div></td>
+                <td><div class="issue-title">No sticky CTA on search/booking flows</div><div class="member-signal-block">64 members: booking felt competitive or stressful</div></td>
                 <td><div class="issue-location">pages/search.tsx, booking modal</div></td>
                 <td><div class="issue-fix">Add position:sticky bottom container with CTA + safe-area-inset-bottom</div></td>
               </tr>
               <tr>
                 <td><span class="issue-num">3</span></td>
-                <td><div class="issue-title">No webview detection — redundant nav/footer inside native app</div></td>
+                <td><div class="issue-title">No webview detection — redundant nav/footer inside native app</div><div class="member-signal-block">7 members: forced to switch between app and browser</div></td>
                 <td><div class="issue-location">pages/_app.tsx</div></td>
                 <td><div class="issue-fix">Add isWebview utility; conditionally hide footer, simplify nav</div></td>
               </tr>
@@ -1509,7 +1927,7 @@
               </tr>
               <tr>
                 <td><span class="issue-num">5</span></td>
-                <td><div class="issue-title">Forms don't account for soft keyboard</div></td>
+                <td><div class="issue-title">Forms don't account for soft keyboard</div><div class="member-signal-block">64 members: booking felt stressful — keyboard buries key actions</div></td>
                 <td><div class="issue-location">All form pages</div></td>
                 <td><div class="issue-fix">Scroll-to-field on focus; padding-bottom adjustment when keyboard open</div></td>
               </tr>
@@ -1521,7 +1939,7 @@
               </tr>
               <tr>
                 <td><span class="issue-num">7</span></td>
-                <td><div class="issue-title">No active tab indicator in mobile nav drawer</div></td>
+                <td><div class="issue-title">No active tab indicator in mobile nav drawer</div><div class="member-signal-block">13 members: difficult to navigate on phone</div></td>
                 <td><div class="issue-location">components/Nav/index.tsx:456</div></td>
                 <td><div class="issue-fix">Add background or underline for active nav item</div></td>
               </tr>
@@ -1539,7 +1957,7 @@
               </tr>
               <tr>
                 <td><span class="issue-num">10</span></td>
-                <td><div class="issue-title">No back navigation in nested mobile flows</div></td>
+                <td><div class="issue-title">No back navigation in nested mobile flows</div><div class="member-signal-block">13 members: hard to navigate / find way around on phone</div></td>
                 <td><div class="issue-location">Nav/drawer stacking</div></td>
                 <td><div class="issue-fix">Add back button/breadcrumb to nested states</div></td>
               </tr>
@@ -1559,6 +1977,7 @@
               <span class="badge badge-web">Nav</span>
               <span class="accordion-title">Mobile Navigation</span>
               <span class="accordion-count">3 issues, 3 strengths</span>
+              <span class="member-signal">13 members: difficult to navigate on phone</span>
               <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-body">
@@ -1609,6 +2028,7 @@
               <span class="badge badge-web">Webview</span>
               <span class="accordion-title">Webview Considerations — Critical</span>
               <span class="accordion-count">5 critical issues</span>
+              <span class="member-signal">7 members: forced to switch between app and browser</span>
               <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-body">
@@ -1657,6 +2077,7 @@
               <span class="badge badge-web">Forms</span>
               <span class="accordion-title">Forms on Mobile — 5 Issues</span>
               <span class="accordion-count">5 issues</span>
+              <span class="member-signal">64 members: booking felt stressful on mobile</span>
               <span class="accordion-icon">+</span>
             </button>
             <div class="accordion-body">
@@ -1931,6 +2352,434 @@
     </div>
 
   </div><!-- /issues -->
+
+  <!-- ══════════════════════════════════════════════════════════
+       MEMBER SURVEY
+  ══════════════════════════════════════════════════════════ -->
+  <div id="tab-survey" class="section">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-eyebrow">Member Survey · 2026 Annual · n=627 Respondents</div>
+      <h2 class="hero-title">Members <em>agree</em><br>with the audit</h2>
+      <div class="hero-meta">
+        <span>627 Total Respondents</span>
+        <span>App Portal: n=477</span>
+        <span>Booking Ease: n=492</span>
+      </div>
+      <div class="hero-stats" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="hero-stat">
+          <div class="hero-stat-num">4.04</div>
+          <div class="hero-stat-label">Overall satisfaction / 5</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">3.50</div>
+          <div class="hero-stat-label">App portal score / 5</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">3.54</div>
+          <div class="hero-stat-label">Booking ease score / 5</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Satisfaction Score Charts -->
+    <div style="background: var(--color-white); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="page-section">
+          <div class="section-rule"></div>
+          <div class="section-header">
+            <span class="section-eyebrow">Satisfaction Scores</span>
+          </div>
+          <h3 class="section-title">How members rate the <em>portal and booking</em></h3>
+
+          <div class="two-col" style="margin-top: 40px; gap: 56px;">
+
+            <!-- App Portal Satisfaction -->
+            <div>
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:24px;">
+                <span class="score-badge">
+                  <span class="score-badge-num">3.50</span>
+                  <span class="score-badge-denom">/ 5</span>
+                </span>
+                <div>
+                  <div style="font-size:13px; font-weight:600; color:var(--color-text);">App Portal Satisfaction</div>
+                  <div style="font-size:12px; color:var(--color-muted);">n=477 respondents</div>
+                </div>
+              </div>
+              <div class="survey-chart">
+                <div class="survey-bar-row">
+                  <div class="survey-bar-label">Very Satisfied</div>
+                  <div class="survey-bar-track"><div class="survey-bar-fill positive" style="width:14.9%"></div></div>
+                  <div class="survey-bar-pct">14.9%</div>
+                </div>
+                <div class="survey-bar-row">
+                  <div class="survey-bar-label">Satisfied</div>
+                  <div class="survey-bar-track"><div class="survey-bar-fill positive" style="width:38.4%"></div></div>
+                  <div class="survey-bar-pct">38.4%</div>
+                </div>
+                <div class="survey-bar-row">
+                  <div class="survey-bar-label">Neutral</div>
+                  <div class="survey-bar-track"><div class="survey-bar-fill neutral" style="width:32.9%"></div></div>
+                  <div class="survey-bar-pct">32.9%</div>
+                </div>
+                <div class="survey-bar-row">
+                  <div class="survey-bar-label">Dissatisfied</div>
+                  <div class="survey-bar-track"><div class="survey-bar-fill negative" style="width:9.6%"></div></div>
+                  <div class="survey-bar-pct">9.6%</div>
+                </div>
+                <div class="survey-bar-row">
+                  <div class="survey-bar-label">Very Dissatisfied</div>
+                  <div class="survey-bar-track"><div class="survey-bar-fill negative" style="width:4.2%"></div></div>
+                  <div class="survey-bar-pct">4.2%</div>
+                </div>
+              </div>
+              <div class="callout">
+                <div class="callout-title">Key Signal</div>
+                <div class="callout-body">53.3% are satisfied or very satisfied, but 32.9% neutral and 13.8% dissatisfied represents meaningful churn risk in a high-retention membership model. Neutral is the most dangerous segment — it's members who haven't left, but haven't been won either.</div>
+              </div>
+            </div>
+
+            <!-- Booking Ease -->
+            <div>
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:24px;">
+                <span class="score-badge">
+                  <span class="score-badge-num">3.54</span>
+                  <span class="score-badge-denom">/ 5</span>
+                </span>
+                <div>
+                  <div style="font-size:13px; font-weight:600; color:var(--color-text);">Booking Ease</div>
+                  <div style="font-size:12px; color:var(--color-muted);">n=492 respondents</div>
+                </div>
+              </div>
+              <div class="survey-chart">
+                <div class="survey-bar-row">
+                  <div class="survey-bar-label">Very Easy (5)</div>
+                  <div class="survey-bar-track"><div class="survey-bar-fill positive" style="width:19.1%"></div></div>
+                  <div class="survey-bar-pct">19.1%</div>
+                </div>
+                <div class="survey-bar-row">
+                  <div class="survey-bar-label">Easy (4)</div>
+                  <div class="survey-bar-track"><div class="survey-bar-fill positive" style="width:34.8%"></div></div>
+                  <div class="survey-bar-pct">34.8%</div>
+                </div>
+                <div class="survey-bar-row">
+                  <div class="survey-bar-label">Neutral (3)</div>
+                  <div class="survey-bar-track"><div class="survey-bar-fill neutral" style="width:29.7%"></div></div>
+                  <div class="survey-bar-pct">29.7%</div>
+                </div>
+                <div class="survey-bar-row">
+                  <div class="survey-bar-label">Difficult (2)</div>
+                  <div class="survey-bar-track"><div class="survey-bar-fill negative" style="width:13.0%"></div></div>
+                  <div class="survey-bar-pct">13.0%</div>
+                </div>
+                <div class="survey-bar-row">
+                  <div class="survey-bar-label">Very Difficult (1)</div>
+                  <div class="survey-bar-track"><div class="survey-bar-fill negative" style="width:3.5%"></div></div>
+                  <div class="survey-bar-pct">3.5%</div>
+                </div>
+              </div>
+              <div class="callout">
+                <div class="callout-title">Booking Challenges (multi-select)</div>
+                <div class="callout-body">64 cited "competitive or stressful" booking · 49 said the window misaligned with travel planning · 31 noted availability changed quickly · 29 found release timing unclear.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile-Specific Findings -->
+    <div class="container">
+      <div class="page-section">
+        <div class="section-rule"></div>
+        <div class="section-header">
+          <span class="section-eyebrow">Mobile-Specific Findings</span>
+        </div>
+        <h3 class="section-title">What members say about <em>the app and mobile web</em></h3>
+
+        <div class="callout critical" style="margin-bottom: 40px;">
+          <div class="callout-title">The mobile problem was volunteered, not prompted</div>
+          <div class="callout-body">These frustrations surfaced in open-text fields — members weren't asked specifically about mobile. Over 40 responses named app or portal usability problems unprompted. When members go out of their way to name something, it matters.</div>
+        </div>
+
+        <div class="category-grid">
+          <div class="category-card">
+            <div class="category-card-num">13</div>
+            <div class="category-card-title">Difficult to Use / Navigate</div>
+            <div class="category-card-desc">Most frequent unprompted complaint. Navigation confusion, hard to find destinations, unclear hierarchy on mobile.</div>
+            <div class="category-card-footer">
+              <span class="badge badge-native">App</span>
+              <span class="badge badge-web">Portal</span>
+            </div>
+          </div>
+          <div class="category-card">
+            <div class="category-card-num">7</div>
+            <div class="category-card-title">App vs. Website Inconsistency</div>
+            <div class="category-card-desc">"Switching back and forth" frustration. Members forced to abandon the app and open a browser to complete tasks.</div>
+            <div class="category-card-footer">
+              <span class="badge badge-both">Fragmentation</span>
+            </div>
+          </div>
+          <div class="category-card">
+            <div class="category-card-num">6</div>
+            <div class="category-card-title">Needs Modernization</div>
+            <div class="category-card-desc">Members explicitly requested updated technology. Language: "outdated," "not up to date," "overhaul needed."</div>
+            <div class="category-card-footer">
+              <span class="badge badge-native">App</span>
+            </div>
+          </div>
+          <div class="category-card">
+            <div class="category-card-num">4</div>
+            <div class="category-card-title">Cumbersome / Clunky</div>
+            <div class="category-card-desc">General friction. The "320 residences, one by one" quote is the canonical example of browse UX failure.</div>
+            <div class="category-card-footer">
+              <span class="badge badge-both">Browse / Search</span>
+            </div>
+          </div>
+          <div class="category-card">
+            <div class="category-card-num">3</div>
+            <div class="category-card-title">Slow / Loading Issues</div>
+            <div class="category-card-desc">Latency called out directly in open text. "Latency is a major issue" is a verbatim quote. Performance is felt.</div>
+            <div class="category-card-footer">
+              <span class="badge badge-native">App</span>
+            </div>
+          </div>
+          <div class="category-card">
+            <div class="category-card-num">2</div>
+            <div class="category-card-title">App Crashes</div>
+            <div class="category-card-desc">Two direct crash mentions plus several "unusable" responses implying functional failure, not just preference.</div>
+            <div class="category-card-footer">
+              <span class="badge badge-p0">P0 Severity</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 40px; margin-bottom: 40px;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-muted); margin-bottom:20px;">Top Mobile-Related Improvement Requests</div>
+          <div class="freq-list">
+            <div class="freq-item">
+              <div class="freq-label">Member portal ease of use</div>
+              <div class="freq-count">#1</div>
+              <div class="freq-bar-track"><div class="freq-bar-fill" style="width:100%"></div></div>
+            </div>
+            <div class="freq-item">
+              <div class="freq-label">Mobile app and portal modernization</div>
+              <div class="freq-count">#2</div>
+              <div class="freq-bar-track"><div class="freq-bar-fill" style="width:78%"></div></div>
+            </div>
+            <div class="freq-item">
+              <div class="freq-label">Integrate app and portal into one experience</div>
+              <div class="freq-count">#3</div>
+              <div class="freq-bar-track"><div class="freq-bar-fill" style="width:58%"></div></div>
+            </div>
+            <div class="freq-item">
+              <div class="freq-label">Ease of planning and booking a trip</div>
+              <div class="freq-count">#4</div>
+              <div class="freq-bar-track"><div class="freq-bar-fill" style="width:45%"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Member Voice -->
+    <div style="background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="page-section">
+          <div class="section-rule"></div>
+          <div class="section-header">
+            <span class="section-eyebrow">Member Voice</span>
+          </div>
+          <h3 class="section-title">In their <em>own words</em></h3>
+
+          <div class="quote-grid">
+            <div class="quote-card featured">
+              <div class="quote-text">"The mobile app is unusable. Its functionality is sub-par and not up to date. Latency is a major issue."</div>
+              <div class="quote-source">Member · 2026 Annual Survey · Open-text response</div>
+            </div>
+            <div class="quote-card">
+              <div class="quote-text">"The app crashes basically every time we use it. It needs an overhaul."</div>
+              <div class="quote-source">Member · 2026 Annual Survey</div>
+            </div>
+            <div class="quote-card">
+              <div class="quote-text">"The app is still cumbersome... 320 residences available in the next 90 days but you have to go into each destination residence by residence."</div>
+              <div class="quote-source">Member · 2026 Annual Survey</div>
+            </div>
+            <div class="quote-card">
+              <div class="quote-text">"I don't like the switching back and forth. I think it should all be on the app."</div>
+              <div class="quote-source">Member · 2026 Annual Survey</div>
+            </div>
+            <div class="quote-card">
+              <div class="quote-text">"I find it frustrating and hard to navigate especially from my phone. Lots of glitches and difficulty accessing what's open at a glance."</div>
+              <div class="quote-source">Member · 2026 Annual Survey</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Crossover Analysis -->
+    <div style="background: var(--color-white); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="page-section">
+          <div class="section-rule"></div>
+          <div class="section-header">
+            <span class="section-eyebrow">Crossover Analysis</span>
+          </div>
+          <h3 class="section-title">The audit and the members <em>agree</em></h3>
+
+          <div class="callout" style="margin-bottom: 40px;">
+            <div class="callout-title">How to read this section</div>
+            <div class="callout-body">Each row maps a specific technical audit finding to independent member survey evidence. The left panel is what the audit identified. The right panel is what members reported — unprompted, in open-text responses — in the same survey period. These are not the same data source. That they converge is the point.</div>
+          </div>
+
+          <div class="crossover-grid">
+
+            <!-- 1. App Crashes / Stability -->
+            <div class="crossover-card p0">
+              <div class="crossover-accent"></div>
+              <div class="crossover-finding">
+                <div class="crossover-finding-eyebrow">Audit Finding <span class="badge badge-p0">P0</span></div>
+                <div class="crossover-finding-title">Webview detection failures + no performance monitoring</div>
+                <div class="crossover-finding-desc">Issue #1: The native app embeds The Source v2 as an undetected webview. Errors surface as silent failures inside the native shell. No performance budgets, no crash reporting, no alerting is documented or in place.</div>
+              </div>
+              <div class="crossover-evidence">
+                <div class="crossover-evidence-eyebrow">Member Survey Evidence</div>
+                <div class="crossover-stat">2 direct crash mentions</div>
+                <div class="crossover-stat-sub">plus multiple "unusable" and "latency" responses in open text (n=477)</div>
+                <div class="crossover-quote-inline">"The mobile app is unusable. Its functionality is sub-par and not up to date. Latency is a major issue."</div>
+              </div>
+            </div>
+
+            <!-- 2. Navigation Confusion -->
+            <div class="crossover-card p0">
+              <div class="crossover-accent"></div>
+              <div class="crossover-finding">
+                <div class="crossover-finding-eyebrow">Audit Finding <span class="badge badge-p0">P0</span></div>
+                <div class="crossover-finding-title">No active nav indicator; redundant nav rendered inside webview</div>
+                <div class="crossover-finding-desc">Issue #5: The mobile hamburger menu has no active-state indicator. The web app also renders its own nav bar inside the native shell — creating two simultaneous navigation systems with no hierarchy between them.</div>
+              </div>
+              <div class="crossover-evidence">
+                <div class="crossover-evidence-eyebrow">Member Survey Evidence</div>
+                <div class="crossover-stat">13 mentions</div>
+                <div class="crossover-stat-sub">"difficult to use / navigate" — most common unprompted app complaint in open text</div>
+                <div class="crossover-quote-inline">"I find the system very difficult on my phone."</div>
+              </div>
+            </div>
+
+            <!-- 3. App vs. Web Fragmentation -->
+            <div class="crossover-card p0">
+              <div class="crossover-accent"></div>
+              <div class="crossover-finding">
+                <div class="crossover-finding-eyebrow">Audit Finding <span class="badge badge-p0">P0</span></div>
+                <div class="crossover-finding-title">Platform ownership undocumented; duplicate Explore / Search surfaces</div>
+                <div class="crossover-finding-desc">Issues #3 + #4: No decision record exists defining what lives in native vs. web. Explore and Search are independently built across both platforms — confusing members about which surface to use and which to trust.</div>
+              </div>
+              <div class="crossover-evidence">
+                <div class="crossover-evidence-eyebrow">Member Survey Evidence</div>
+                <div class="crossover-stat">7 members</div>
+                <div class="crossover-stat-sub">described "switching back and forth" between the app and browser to complete a single task</div>
+                <div class="crossover-quote-inline">"I don't like the switching back and forth. I think it should all be on the app."</div>
+              </div>
+            </div>
+
+            <!-- 4. Booking Flow / CTA -->
+            <div class="crossover-card p1">
+              <div class="crossover-accent"></div>
+              <div class="crossover-finding">
+                <div class="crossover-finding-eyebrow">Audit Finding <span class="badge badge-p1">P1</span></div>
+                <div class="crossover-finding-title">No sticky CTA on conversion flows — keyboard covers booking actions</div>
+                <div class="crossover-finding-desc">Issue #7: Booking and search flows lack a persistent call-to-action on mobile. When the keyboard opens, the CTA is buried. Users must scroll to find and confirm booking actions at the highest-intent moment.</div>
+              </div>
+              <div class="crossover-evidence">
+                <div class="crossover-evidence-eyebrow">Member Survey Evidence</div>
+                <div class="crossover-stat">64 members</div>
+                <div class="crossover-stat-sub">said booking felt "competitive or stressful to secure preferred dates" (of n=492)</div>
+                <div class="crossover-quote-inline">"I find it frustrating and hard to navigate especially from my phone."</div>
+              </div>
+            </div>
+
+            <!-- 5. Browse / Search Experience -->
+            <div class="crossover-card p1">
+              <div class="crossover-accent"></div>
+              <div class="crossover-finding">
+                <div class="crossover-finding-eyebrow">Audit Finding <span class="badge badge-p1">P1</span></div>
+                <div class="crossover-finding-title">Duplicate search surface; no unified browse / filter pattern</div>
+                <div class="crossover-finding-desc">Issue #4: Both platforms have a search/explore flow, but neither is designed for the browse-first behavior of a member planning a vacation. No filter persistence, no list view, no way to compare destinations efficiently in one place.</div>
+              </div>
+              <div class="crossover-evidence">
+                <div class="crossover-evidence-eyebrow">Member Survey Evidence</div>
+                <div class="crossover-stat">49 members</div>
+                <div class="crossover-stat-sub">said the booking window misaligned with how they plan travel — browse friction compounds this</div>
+                <div class="crossover-quote-inline">"320 residences available in next 90 days but you have to go into each destination residence by residence."</div>
+              </div>
+            </div>
+
+          </div><!-- /crossover-grid -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Priority Impact -->
+    <div class="container">
+      <div class="page-section">
+        <div class="section-rule"></div>
+        <div class="section-header">
+          <span class="section-eyebrow">Priority Impact</span>
+        </div>
+        <h3 class="section-title">How survey data <em>shapes the roadmap</em></h3>
+
+        <p style="font-size:14px; color:var(--color-muted); max-width:680px; margin-bottom:40px; line-height:1.75;">The survey reinforces — and in some cases escalates — the audit's priority assignments. Issues the audit flagged as P1 on technical grounds alone become more urgent when member friction data is layered in.</p>
+
+        <div class="roadmap" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="roadmap-phase">
+            <div class="roadmap-phase-num">Escalate</div>
+            <div class="roadmap-phase-title">Booking CTA</div>
+            <div class="roadmap-phase-time">P1 → P0 by member data</div>
+            <ul class="roadmap-items">
+              <li>64 members named booking stress</li>
+              <li>13.8% dissatisfied with the portal</li>
+              <li>Sticky CTA is an S-effort fix</li>
+              <li>Highest impact per sprint day spent</li>
+            </ul>
+          </div>
+          <div class="roadmap-phase">
+            <div class="roadmap-phase-num">Confirm</div>
+            <div class="roadmap-phase-title">Platform Strategy</div>
+            <div class="roadmap-phase-time">Aligned P0 — do first</div>
+            <ul class="roadmap-items">
+              <li>7 members frustrated by app/web split</li>
+              <li>#3 improvement: "integrate app + portal"</li>
+              <li>Document ownership decision publicly</li>
+              <li>Single source of truth for feature delivery</li>
+            </ul>
+          </div>
+          <div class="roadmap-phase">
+            <div class="roadmap-phase-num">Reframe</div>
+            <div class="roadmap-phase-title">Browse / Search</div>
+            <div class="roadmap-phase-time">Not just UX — it's retention</div>
+            <ul class="roadmap-items">
+              <li>"320 residences, one by one" = planning failure</li>
+              <li>49 members: window misaligns with travel habits</li>
+              <li>Browse is the discovery surface — fix it early</li>
+              <li>Drives satisfaction more than raw speed</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout critical" style="margin-top: 8px;">
+          <div class="callout-title">The core argument</div>
+          <div class="callout-body">An overall satisfaction score of 4.04/5 is a false positive. Members are satisfied with Exclusive Resorts as a product — the destinations, the service, the membership value. The 3.50 app score and the volume of open-text frustrations make clear the digital experience is underperforming relative to the physical one. The risk is not that members leave today. It is that digital friction accumulates until the gap between what the product promises and what the app delivers becomes impossible to ignore.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /survey -->
 
 </div><!-- /main -->
 
